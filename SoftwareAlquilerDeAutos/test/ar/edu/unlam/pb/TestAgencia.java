@@ -22,7 +22,7 @@ public class TestAgencia {
 		Agencia agencia = new Agencia(razonSocial, cuit, garajesDisponibles);
 		Garaje garaje = new Garaje(id, direccion, espaciosDisponibles, autosDisponibles);
 		agencia.agregarGaraje(garaje);
-		assertNotNull(agencia.getGarajesDisponibles());
+		assertEquals(agencia.getGarajesDisponibles().size(), 1);
 	}
 
 	@Test
