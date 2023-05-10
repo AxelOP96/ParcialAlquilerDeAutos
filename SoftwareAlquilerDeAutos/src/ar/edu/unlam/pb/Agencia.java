@@ -7,7 +7,7 @@ public class Agencia {
 	private String razonSocial;
 	private Integer cuit;
 	private HashSet<Garaje> garajesDisponibles;
-	private HashSet<Auto> RegistroDeAutos;
+	private HashSet<Auto> registroDeAutos;
 	private HashSet<Cliente> listaDeClientes;
 
 	public Agencia(String razonSocial, Integer cuit, HashSet<Garaje> garajesDisponibles) {
@@ -15,6 +15,8 @@ public class Agencia {
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 		this.garajesDisponibles = garajesDisponibles;
+		this.registroDeAutos = registroDeAutos;
+		this.listaDeClientes = listaDeClientes;
 	}
 
 	public String getRazonSocial() {
@@ -52,11 +54,11 @@ public class Agencia {
 	}
 
 	public HashSet<Auto> getRegistroDeAutos() {
-		return RegistroDeAutos;
+		return registroDeAutos;
 	}
 
 	public void setRegistroDeAutos(HashSet<Auto> registroDeAutos) {
-		RegistroDeAutos = registroDeAutos;
+		registroDeAutos = registroDeAutos;
 	}
 
 	public HashSet<Cliente> getListaDeClientes() {
