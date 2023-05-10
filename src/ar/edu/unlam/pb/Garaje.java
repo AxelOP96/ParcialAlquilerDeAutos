@@ -2,6 +2,8 @@ package ar.edu.unlam.pb;
 
 import java.util.ArrayList;
 
+import ar.edu.unlam.pb2.sistemaAlquilerAutos.Auto;
+
 public class Garaje {
 
 	private Integer idGaraje;
@@ -16,10 +18,16 @@ public class Garaje {
 	    this.autosEnElGaraje = new ArrayList<Auto>();
 	}
 
-	public void agregarAuto(Auto auto) {
-		if (tieneEspaciosDisponibles()) {
+	
+	
+	public boolean agregarAuto(Auto auto) {
+		if (espaciosDisponibles > 0) {
 			this.autosEnElGaraje.add(auto);
-			this.espaciosDisponibles--;
+			auto.setGaraje(this); //Se agrega este auto en el garaje actual
+			espaciosDisponibles--;
+			return true;			//Si se agrego
+		} else {
+			return false;		//no se agrego
 		}
 	}
 
