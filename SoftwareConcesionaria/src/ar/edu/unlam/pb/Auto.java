@@ -2,12 +2,13 @@ package ar.edu.unlam.pb;
 
 public class Auto {
 
-	private String codigo;
-	private String autor;
-	private String titulo;
+	private String patente;
+	private String modelo;
+	private String marca;
+	
 	
 
 	public Auto() {
-		
+	
 	}
 }
