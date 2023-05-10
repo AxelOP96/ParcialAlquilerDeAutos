@@ -4,20 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import ar.edu.unlam.pb2.sistemaAlquilerAutos.Agencia;
-import ar.edu.unlam.pb2.sistemaAlquilerAutos.Auto;
-import ar.edu.unlam.pb2.sistemaAlquilerAutos.Cliente;
-import ar.edu.unlam.pb2.sistemaAlquilerAutos.Garaje;
-import ar.edu.unlam.pb2.sistemaAlquilerAutos.Reserva;
-
 public class TestReserva {
 
-	@Test
-	public void queSePuedaCrearUnaReservaEnAgencia() {
-		
-	}
-
-	
 	@Test
 	public void queSeSepaElValorFinalDeUnAutoDe10MilPorDiaReservadoPor5Dias() {
 
@@ -69,10 +57,11 @@ public class TestReserva {
 
 		assertEquals(PRECIO_TOTAL_RESERVA_ESPERADO, PRECIO_TOTAL_RESERVA);
 	}
+	
+	
+	
 }
 
-//queSePuedaCrearUnaReservaEnAgencia()
-//queSeSepaElValorFinalDeUnAutoDe10MilPorDiaReservadoPor5Dias()
 //queCuandoUnClienteHagaUnaReservaDeMasDe100MilEstePaseASerClienteVip()
 //queALosCLientesVipSeLeHaganUnDescuentoDel10PorCientoEnSusReservasSiguientes()
 

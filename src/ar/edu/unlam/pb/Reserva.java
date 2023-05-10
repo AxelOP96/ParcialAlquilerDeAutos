@@ -13,6 +13,7 @@ public class Reserva {
 		this.cliente = cliente;
 		this.auto = auto;
 		this.dias = dias;
+		this.precioTotal = auto.getPrecioPorDia()*dias;
 		
 	}
 

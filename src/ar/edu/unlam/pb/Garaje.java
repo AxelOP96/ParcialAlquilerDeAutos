@@ -1,8 +1,6 @@
 package ar.edu.unlam.pb;
 
-import java.util.ArrayList;
-
-import ar.edu.unlam.pb2.sistemaAlquilerAutos.Auto;
+import java.util.*;
 
 public class Garaje {
 
@@ -61,5 +59,11 @@ public class Garaje {
 
 	public Object getDireccion() {
 		 return this.direccion;
+	}
+
+
+
+	public void disminuirCantidadEspaciosDisponibles() {
+		this.espaciosDisponibles--;
 	}
 }
