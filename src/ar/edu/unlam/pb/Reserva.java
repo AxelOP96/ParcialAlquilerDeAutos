@@ -13,9 +13,20 @@ public class Reserva {
 		this.cliente = cliente;
 		this.auto = auto;
 		this.dias = dias;
-		this.precioTotal = auto.getPrecioPorDia()*dias;
 		
-	}
+		if( (auto.getPrecioPorDia()*dias)  >100000.0 && cliente.getEsVip()==false) {
+			cliente.setEsVip(true);
+			this.precioTotal = auto.getPrecioPorDia()*dias;
+		}
+		else if(cliente.getEsVip()==true){
+			this.precioTotal = auto.getPrecioPorDia()*dias*0.9;
+		}
+		else {
+			this.precioTotal = auto.getPrecioPorDia()*dias;
+		}
+	}			
+		
+		
 
 	public Integer getCodReserva() {
 		return codReserva;
