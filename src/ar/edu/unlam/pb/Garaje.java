@@ -1,10 +1,14 @@
 package ar.edu.unlam.pb;
 
+<<<<<<< HEAD
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+=======
+import java.util.*;
+>>>>>>> 09e05652f3f2ed76880de7eab9e8cbfffe35ecc8
 
 public class Garaje {
 
@@ -12,6 +16,7 @@ public class Garaje {
 	private Integer espaciosDisponibles;
 	private String direccion;
 	private ArrayList<Auto> autosEnElGaraje;
+<<<<<<< HEAD
 	private ArrayList<Garaje> garajes;
 	private List<Alquiler> alquileres = new ArrayList<>();
 
@@ -35,6 +40,29 @@ public class Garaje {
 		this.garajes.add(garaje);
 	}
 
+=======
+
+	public Garaje(Integer idGaraje, String direccion, Integer espaciosDisponibles) {
+	    this.idGaraje = idGaraje;
+	    this.direccion = direccion;
+	    this.espaciosDisponibles = espaciosDisponibles;
+	    this.autosEnElGaraje = new ArrayList<Auto>();
+	}
+
+	
+	
+	public boolean agregarAuto(Auto auto) {
+		if (espaciosDisponibles > 0) {
+			this.autosEnElGaraje.add(auto);
+			auto.setGaraje(this); //Se agrega este auto en el garaje actual
+			espaciosDisponibles--;
+			return true;			//Si se agrego
+		} else {
+			return false;		//no se agrego
+		}
+	}
+
+>>>>>>> 09e05652f3f2ed76880de7eab9e8cbfffe35ecc8
 	public boolean estaAutoEnGaraje(Auto auto) {
 		return this.autosEnElGaraje.contains(auto);
 	}
@@ -63,6 +91,7 @@ public class Garaje {
 		return this.autosEnElGaraje;
 	}
 
+<<<<<<< HEAD
 	public String getDireccion() {
 		return this.direccion;
 	}
@@ -138,3 +167,15 @@ public class Garaje {
 	}
 
 }
+=======
+	public Object getDireccion() {
+		 return this.direccion;
+	}
+
+
+
+	public void disminuirCantidadEspaciosDisponibles() {
+		this.espaciosDisponibles--;
+	}
+}
+>>>>>>> 09e05652f3f2ed76880de7eab9e8cbfffe35ecc8
