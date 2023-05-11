@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
 
 public class TestGaraje {
 
@@ -38,7 +37,7 @@ public class TestGaraje {
 	@Test
     public void queSePuedaAgregarYQuitarUnAuto() {
         Garaje garaje = new Garaje(1, "Av. Siempreviva 742", 5, new ArrayList<>());
-        Auto auto = new Auto("AAA123", "Fiat", "Uno", 0, 1500.0, garaje,new ArrayList<Alquiler>());
+        Auto auto = new Auto("AAA123", "Fiat", "Uno", 0, 1500.0, garaje,new ArrayList<Alquiler>(), 150.0);
         garaje.agregarAuto(auto);
         assertTrue(garaje.estaAutoEnGaraje(auto));
         garaje.quitarAuto(auto);
@@ -48,8 +47,8 @@ public class TestGaraje {
     @Test
     public void queSePuedaBuscarUnAutoPorPatente() {
         Garaje garaje = new Garaje(1, "Av. Siempreviva 742", 5, new ArrayList<>());
-        Auto auto1 = new Auto("AAA123", "Fiat", "Uno", 0, 1500.0, garaje, new ArrayList<Alquiler>());
-        Auto auto2 = new Auto("BBB456", "Renault", "Kwid", 0, 2000.0, garaje, new ArrayList<Alquiler>());
+        Auto auto1 = new Auto("AAA123", "Fiat", "Uno", 0, 1500.0, garaje, new ArrayList<Alquiler>(), 200.0);
+        Auto auto2 = new Auto("BBB456", "Renault", "Kwid", 0, 2000.0, garaje, new ArrayList<Alquiler>(), 150.0);
         garaje.agregarAuto(auto1);
         garaje.agregarAuto(auto2);
         Auto autoEncontrado = garaje.buscarAuto("BBB456");
@@ -59,7 +58,7 @@ public class TestGaraje {
     @Test
     public void queElGarajeTengaEspaciosDisponibles() {
         Garaje garaje = new Garaje(1, "Av. Siempreviva 742", 5, new ArrayList<>());
-        Auto auto1 = new Auto("AAA123", "Fiat", "Uno", 0, 1500.0, garaje, new ArrayList<Alquiler>());
+        Auto auto1 = new Auto("AAA123", "Fiat", "Uno", 0, 1500.0, garaje, new ArrayList<Alquiler>(), 150.0);
         garaje.agregarAuto(auto1);
         assertTrue(garaje.tieneEspaciosDisponibles());
     }
@@ -67,8 +66,8 @@ public class TestGaraje {
     @Test
     public void queElGarajeNoTengaEspaciosDisponibles() {
         Garaje garaje = new Garaje(1, "Av. Siempreviva 742", 1, new ArrayList<>());
-        Auto auto1 = new Auto("AAA123", "Fiat", "Uno", 0, 1500.0, garaje, new ArrayList<Alquiler>());
-        Auto auto2 = new Auto("BBB456", "Renault", "Kwid", 0, 2000.0, garaje, new ArrayList<Alquiler>());
+        Auto auto1 = new Auto("AAA123", "Fiat", "Uno", 0, 1500.0, garaje, new ArrayList<Alquiler>(), 200.0);
+        Auto auto2 = new Auto("BBB456", "Renault", "Kwid", 0, 2000.0, garaje, new ArrayList<Alquiler>(), 200.0);
         garaje.agregarAuto(auto1);
         garaje.agregarAuto(auto2);
        assertFalse(garaje.tieneEspaciosDisponibles());
@@ -77,8 +76,8 @@ public class TestGaraje {
     @Test
     public void testAgregarAuto() {
         Garaje garaje = new Garaje(1, "Calle 123", 5, new ArrayList<>());
-        Auto auto1 = new Auto("ABC123", "Toyota", "Corolla", 0, 2000.0, garaje,  new ArrayList<Alquiler>());
-        Auto auto2 = new Auto("DEF456", "Ford", "Focus", 0, 1500.0, garaje,  new ArrayList<Alquiler>());
+        Auto auto1 = new Auto("ABC123", "Toyota", "Corolla", 0, 2000.0, garaje,  new ArrayList<Alquiler>(), 150.0);
+        Auto auto2 = new Auto("DEF456", "Ford", "Focus", 0, 1500.0, garaje,  new ArrayList<Alquiler>(), 150.0);
         garaje.agregarAuto(auto1);
         garaje.agregarAuto(auto2);
         assertEquals(2, garaje.getAutosEnElGaraje().size());
@@ -87,19 +86,19 @@ public class TestGaraje {
     @Test
     public void testQuitarAuto() {
         Garaje garaje = new Garaje(1, "Calle 123", 5, new ArrayList<>());
-        Auto auto1 = new Auto("ABC123", "Toyota", "Corolla", 0, 2000.0, garaje,  new ArrayList<Alquiler>());
-        Auto auto2 = new Auto("DEF456", "Ford", "Focus", 0, 1500.0, garaje,  new ArrayList<Alquiler>());
+        Auto auto1 = new Auto("ABC123", "Toyota", "Corolla", 0, 2000.0, garaje,  new ArrayList<Alquiler>(), 200.0);
+        Auto auto2 = new Auto("DEF456", "Ford", "Focus", 0, 1500.0, garaje,  new ArrayList<Alquiler>(), 150.0);
         garaje.agregarAuto(auto1);
         garaje.agregarAuto(auto2);
         garaje.quitarAuto(auto1);
         assertEquals(1, garaje.getAutosEnElGaraje().size());
     }
-    
+    //hijo de puta
     @Test
     public void testBuscarAuto() {
         Garaje garaje = new Garaje(1, "Calle 123", 5, new ArrayList<>());
-        Auto auto1 = new Auto("ABC123", "Toyota", "Corolla", 0, 2000.0, garaje,  new ArrayList<Alquiler>());
-        Auto auto2 = new Auto("DEF456", "Ford", "Focus", 0, 1500.0, garaje,  new ArrayList<Alquiler>());
+        Auto auto1 = new Auto("ABC123", "Toyota", "Corolla", 0, 2000.0, garaje,  new ArrayList<Alquiler>(), 150.0);
+        Auto auto2 = new Auto("DEF456", "Ford", "Focus", 0, 1500.0, garaje,  new ArrayList<Alquiler>(), 200.0);
         garaje.agregarAuto(auto1);
         garaje.agregarAuto(auto2);
         Auto autoBuscado = garaje.buscarAuto("ABC123");
@@ -118,8 +117,8 @@ public class TestGaraje {
     @Test
     public void testEstaAutoEnGaraje() {
         Garaje garaje = new Garaje(1, "Calle 123", 5, new ArrayList<>());
-        Auto auto1 = new Auto("ABC123", "Toyota", "Corolla", 0, 2000.0, garaje,  new ArrayList<Alquiler>());
-        Auto auto2 = new Auto("DEF456", "Ford", "Focus", 0, 1500.0, garaje,  new ArrayList<Alquiler>());
+        Auto auto1 = new Auto("ABC123", "Toyota", "Corolla", 0, 2000.0, garaje,  new ArrayList<Alquiler>(), 200.0);
+        Auto auto2 = new Auto("DEF456", "Ford", "Focus", 0, 1500.0, garaje,  new ArrayList<Alquiler>(), 250.0);
         garaje.agregarAuto(auto1);
         assertTrue(garaje.estaAutoEnGaraje(auto1));
         assertFalse(garaje.estaAutoEnGaraje(auto2));
