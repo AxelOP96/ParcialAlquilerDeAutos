@@ -1,13 +1,31 @@
 package ar.edu.unlam.pb;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Auto {
 
 	private String patente;
 	private String marca;
-	private String modelo;
-	private Double precioPorDia;
+	private double precio;
 	private Garaje garaje;
+	private int anio;
+	private Double precioPorDia;
+	private ArrayList<Alquiler> alquileres;
+	private String modelo;
 	private Boolean estaDisponible;
+
+	public Auto(String patente, String marca, String modelo, int anio, Double precio, Garaje garaje,ArrayList<Alquiler> alquileres) {
+	    this.patente = patente;
+	    this.modelo = modelo;
+	    this.marca = marca;
+	    this.precio = precio;
+	    this.garaje = garaje;
+	    this.anio = anio;
+	    this.precioPorDia = precioPorDia;
+	    this.alquileres = new ArrayList<>();
+	}
 	
 	public Auto(String patente, String marca, String modelo, Double precioPorDia) {
 		this.patente = patente;
@@ -15,6 +33,7 @@ public class Auto {
 		this.modelo = modelo;
 		this.precioPorDia = precioPorDia;
 		this.estaDisponible = true;
+
 	}
 
 	public Auto(String patente, String marca, String modelo, Double precioPorDia, Garaje garaje) {
@@ -58,10 +77,6 @@ public class Auto {
 		this.modelo = modelo;
 	}
 
-	public Double getPrecioPorDia() {
-		return precioPorDia;
-	}
-
 	public void setPrecioPorDia(Double precioPorDia) {
 		this.precioPorDia = precioPorDia;
 	}
@@ -75,11 +90,11 @@ public class Auto {
 	}
 
 	
-	public Boolean getEstaDisponoble() {
+	public Boolean getEstaDisponible() {
 		return estaDisponible;
 	}
 
-	public void setEstaDisponoble(Boolean estaDisponoble) {
+	public void setEstaDisponible(Boolean estaDisponoble) {
 		this.estaDisponible = estaDisponoble;
 	}
 
@@ -112,4 +127,34 @@ public class Auto {
 		
 		return "Coche [patente=" + this.getPatente() + ",marca = " + this.getMarca() + ",modelo=" + this.getModelo()+"]";
 	}
+
+	public boolean contains(Auto auto) {
+	    return auto.contains(auto);
+	}
+
+	public void setPrecio(double nuevoPrecio) {
+        this.precio = nuevoPrecio;
+    }
+
+	 public double getPrecio() {
+	        return this.precio;
+	    }
+	 public boolean estaDisponible(Date fechaInicio, Date fechaFin) {
+		    for (Alquiler alquiler : this.alquileres) {
+		        if (fechaInicio.before(alquiler.getFechaFin()) && fechaFin.after(alquiler.getFechaInicio())) {
+		            return false;
+		        }
+		    }
+		    return true;
+		}
+
+	 public double getPrecioPorHora() {
+		    // retorna el precio por hora del auto
+		    return this.precioPorDia/24;
+		}
+
+		public double getPrecioPorDia() {
+		    // calcula y retorna el precio por día del auto
+		    return this.precioPorDia * 1;
+		}
 }

@@ -2,6 +2,7 @@ package ar.edu.unlam.pb;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.junit.Test;
@@ -43,5 +44,8 @@ public class TestAgencia {
 		Cliente cliente = new Cliente(dni, direccion, nombreYApellido, telefono);
 		agencia.agregarCliente(cliente);
 		assertEquals(agencia.getClientes().size(), 1);
+		
+	    
+
 	}
 }
