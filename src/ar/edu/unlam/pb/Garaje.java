@@ -10,65 +10,57 @@ import java.util.*;
 public class Garaje {
 
 	private Integer idGaraje;
-	private Integer espaciosDisponibles;
 	private String direccion;
-	private ArrayList<Auto> autosEnElGaraje;
-	private ArrayList<Garaje> garajes;
-	private List<Alquiler> alquileres = new ArrayList<>();
+	private Integer espaciosDisponibles;
+	private ArrayList<Auto> autosEnElGaraje = new ArrayList<>();
+	private ArrayList<Auto> autosDisponibles = new ArrayList<>();
+	private ArrayList<Garaje> garajes = new ArrayList<>();
+	private ArrayList<Alquiler> alquileres = new ArrayList<>();
+	private List<Auto> autos;
 
 
-	public Garaje(Integer idGaraje, String direccion, Integer espaciosDisponibles, ArrayList<Auto> autosDisponibles) {
-		this.idGaraje = idGaraje;
-		this.direccion = direccion;
-		this.espaciosDisponibles = espaciosDisponibles;
-		this.autosEnElGaraje = new ArrayList<>(autosDisponibles);
-		this.garajes = new ArrayList<>();
+	public Garaje(Integer idGaraje, String direccion, Integer espaciosDisponibles,ArrayList<Auto> autosEnElGaraje) {
+	    this.setIdGaraje(idGaraje);
+	    this.direccion = direccion;
+	    this.espaciosDisponibles = espaciosDisponibles;
+	    this.autosEnElGaraje = new ArrayList<Auto>(autosEnElGaraje);
+	    this.autosDisponibles = new ArrayList<>(autosDisponibles);
+	    this.autos = new ArrayList<Auto>();
+	    
+	    
 	}
-/*
-	public void agregarAuto(Auto auto) {
-		if (tieneEspaciosDisponibles()) {
-			this.autosEnElGaraje.add(auto);
-			this.espaciosDisponibles--;
-		}
-	}*/
 
 	public void agregarGaraje(Garaje garaje) {
 		this.garajes.add(garaje);
 	}
 
 	public Garaje(Integer idGaraje, String direccion, Integer espaciosDisponibles) {
-	    this.idGaraje = idGaraje;
+	    this.setIdGaraje(idGaraje);
 	    this.direccion = direccion;
 	    this.espaciosDisponibles = espaciosDisponibles;
 	    this.autosEnElGaraje = new ArrayList<Auto>();
 	}
 
-	public Garaje(Integer id, String direccion, Integer espaciosDisponibles, HashSet<Auto> autosDisponibles) {
-		// TODO Auto-generated constructor stub
-		this.idGaraje = id;
-		this.direccion = direccion;
-		this.espaciosDisponibles = espaciosDisponibles;
-	}
+	//public Garaje(Integer id, String direccion, Integer espaciosDisponibles, HashSet<Auto> autosDisponibles) {
+	//	this.setIdGaraje(id);
+//		this.direccion = direccion;
+	//	this.espaciosDisponibles = espaciosDisponibles;
+	//}
+ 
 	
 	public boolean agregarAuto(Auto auto) {
-		if (espaciosDisponibles > 0) {
-			this.autosEnElGaraje.add(auto);
-			auto.setGaraje(this); //Se agrega este auto en el garaje actual
-			espaciosDisponibles--;
-			return true;			//Si se agrego
-		} else {
-			return false;		//no se agrego
-		}
+	    if (espaciosDisponibles > 0) {
+	        this.autosEnElGaraje.add(auto);
+	        auto.setGaraje(this); //Se agrega este auto en el garaje actual
+	        this.autosDisponibles.remove(auto); //Eliminamos el auto de la lista de autos disponibles
+	        espaciosDisponibles--;
+	        return true;			//Si se agrego
+	    } else {
+	        return false;		//no se agrego
+	    }
 	}
 	public boolean estaAutoEnGaraje(Auto auto) {
 		return this.autosEnElGaraje.contains(auto);
-	}
-
-	public void quitarAuto(Auto auto) {
-		if (estaAutoEnGaraje(auto)) {
-			this.autosEnElGaraje.remove(auto);
-			this.espaciosDisponibles++;
-		}
 	}
 
 	public boolean tieneEspaciosDisponibles() {
@@ -83,10 +75,6 @@ public class Garaje {
 		}
 		return null;
 	}
-
-	public ArrayList<Auto> getAutosEnElGaraje() {
-		return this.autosEnElGaraje;
-	}
 	public String getDireccion() {
 		return this.direccion;
 	}
@@ -96,8 +84,8 @@ public class Garaje {
 		return garajes.get(index);
 	}
 
-	public Auto[] getAutos() {
-		return this.autosEnElGaraje.toArray(new Auto[this.autosEnElGaraje.size()]);
+	public List<Auto> getAutos() {
+	    return Collections.unmodifiableList(this.autosEnElGaraje);
 	}
 
 	public ArrayList<Garaje> getGarajesDisponibles() {
@@ -163,5 +151,40 @@ public class Garaje {
 	public void disminuirCantidadEspaciosDisponibles() {
 		this.espaciosDisponibles--;
 	}
+
+	 public void agregarAutoDisponible(Auto auto) {
+	        this.autosDisponibles.add(auto);
+	    }
+
+	 public boolean quitarAuto(Auto autoAnterior) {
+		    if (autosEnElGaraje != null) {
+		        Iterator<Auto> iterador = autosEnElGaraje.iterator();
+		        while (iterador.hasNext()) {
+		            Auto autoActual = iterador.next();
+		            if (autoActual.equals(autoAnterior)) {
+		                iterador.remove();
+		                espaciosDisponibles++;
+		                autosDisponibles.add(autoActual);
+		                autoActual.setGaraje(null); // Actualizar la referencia al garaje
+		                return true; // Devolver true si se ha quitado el auto con éxito
+		            }
+		        }
+		    }
+		    return false;
+		}
+	public Integer getIdGaraje() {
+		return idGaraje;
+	}
+
+	public void setIdGaraje(Integer idGaraje) {
+		this.idGaraje = idGaraje;
+	}
+
+	public ArrayList<Auto> getAutosEnElGaraje() {
+	    return this.autosEnElGaraje;
+	}
+
+
+
 }
 

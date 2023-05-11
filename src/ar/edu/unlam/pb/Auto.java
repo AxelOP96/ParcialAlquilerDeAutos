@@ -1,8 +1,9 @@
 package ar.edu.unlam.pb;
 
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Iterator;
 
 public class Auto {
 
@@ -16,15 +17,16 @@ public class Auto {
 	private String modelo;
 	private Boolean estaDisponible;
 
-	public Auto(String patente, String marca, String modelo, int anio, Double precio, Garaje garaje,ArrayList<Alquiler> alquileres) {
+	public Auto(String patente, String marca, String modelo, int anio, Double precio, Garaje garaje,ArrayList<Alquiler> alquileres, Double precioPorDia) {
 	    this.patente = patente;
 	    this.modelo = modelo;
 	    this.marca = marca;
 	    this.precio = precio;
 	    this.garaje = garaje;
-	    this.anio = anio;
+	    this.setAnio(anio);
 	    this.precioPorDia = precioPorDia;
 	    this.alquileres = new ArrayList<>();
+	    this.anio = anio;
 	}
 	
 	public Auto(String patente, String marca, String modelo, Double precioPorDia) {
@@ -128,8 +130,8 @@ public class Auto {
 		return "Coche [patente=" + this.getPatente() + ",marca = " + this.getMarca() + ",modelo=" + this.getModelo()+"]";
 	}
 
-	public boolean contains(Auto auto) {
-	    return auto.contains(auto);
+	public static boolean contains(Auto auto) {
+	    return Auto.contains(auto);
 	}
 
 	public void setPrecio(double nuevoPrecio) {
@@ -157,4 +159,28 @@ public class Auto {
 		    // calcula y retorna el precio por día del auto
 		    return this.precioPorDia * 1;
 		}
+
+		public static boolean remove(Auto autoAnterior) {
+		    if (!Auto.contains(autoAnterior)) {
+		        throw new IllegalArgumentException("El auto no se encuentra en la lista de autos de la agencia.");
+		    }
+		    
+		    return Auto.remove(autoAnterior);
+		}
+
+		public static Iterator<Auto> iterator(ArrayList<Auto> autos) {
+		    if (autos != null) { // Verificar que autos no sea null
+		        return autos.iterator();
+		    }
+		    return Collections.emptyIterator(); // Si autos es null, devolver un iterador vacío
+		}
+
+		public int getAnio() {
+			return anio;
+		}
+
+		public void setAnio(int anio) {
+			this.anio = anio;
+		}
+
 }
