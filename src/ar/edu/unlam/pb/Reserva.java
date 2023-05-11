@@ -63,7 +63,45 @@ public class Reserva {
 	public Double getPrecioTotal() {
 		return this.precioTotal;
 	}
+	
 
+	public String toString() {
+		return "["+ "Cod="+this.codReserva + "Modelo="+this.auto.getModelo()+"]";
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codReserva == null) ? 0 : codReserva.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reserva other = (Reserva) obj;
+		if (codReserva == null) {
+			if (other.codReserva != null)
+				return false;
+		} else if (!codReserva.equals(other.codReserva))
+			return false;
+		return true;
+	}
+
+
+
+	
+	
 	
 	
 	

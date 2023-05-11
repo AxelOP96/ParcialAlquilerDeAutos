@@ -3,6 +3,7 @@ package ar.edu.unlam.pb;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
+//import java.util.LinkedList;
 import java.util.List;
 
 public class Agencia {
@@ -14,7 +15,9 @@ public class Agencia {
 	private HashSet<Cliente> clientes;
 	private HashSet<Reserva> reservas;
 
-    public Agencia(String razonSocial, Integer l, ArrayList<Garaje> garajesDisponibles2) {
+    
+	
+	public Agencia(String razonSocial, Integer l, ArrayList<Garaje> garajesDisponibles2) {
         this.razonSocial = razonSocial;
         this.cuit = l;
         this.garajesDisponibles = new ArrayList<>();
@@ -74,12 +77,17 @@ public class Agencia {
 	
 	public Reserva alquilarAuto(Integer codReserva,Cliente cliente, Auto auto,Integer dias) {
 		
-		Reserva reserva = new Reserva(codReserva, cliente, auto, dias);
-        reservas.add(reserva);
-        auto.reservar();
-        autos.remove(auto);
-        auto.getGaraje().disminuirCantidadEspaciosDisponibles();//Hacer test de este
-        return reserva;
+		if(autos.contains(auto)) {
+			Reserva reserva = new Reserva(codReserva, cliente, auto, dias);
+	        reservas.add(reserva);
+	        auto.reservar();
+	        autos.remove(auto);
+	        auto.getGaraje().disminuirCantidadEspaciosDisponibles();//Hacer test de este
+	        return reserva;
+		}
+		else 
+			return null;
+		
 	}
 	public String getRazonSocial() {
 		return razonSocial;
@@ -113,7 +121,12 @@ public class Agencia {
 		this.clientes = clientes;
 	}
 
-
+	public HashSet<Reserva> getReservas() {
+		return reservas;
+	}
+	public void setReservas(HashSet<Reserva> reservas) {
+		this.reservas = reservas;
+	}
 
 	public Integer cantidaDeAutosDisponibles() {
 		return this.autos.size();
@@ -304,6 +317,14 @@ public class Agencia {
 	    Garaje garaje = auto.getGaraje();
 	    garaje.actualizarAlquiler(alquiler);
 	    return true;
+	}
+	
+	public Boolean cambiarAuto(Reserva reserva1, Auto autoNuevo) {
+		if(this.autos.add(reserva1.getAuto()) ) {
+			reserva1.setAuto(autoNuevo);
+			return true;
+		}
+			return null;
 	}
 }
 

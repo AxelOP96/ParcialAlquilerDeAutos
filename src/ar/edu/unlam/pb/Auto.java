@@ -1,8 +1,8 @@
 package ar.edu.unlam.pb;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;//Aqui se incluye arrayList, hashSet, treeSet,linckedList,etc.
+//import java.util.List;
 
 public class Auto {
 
