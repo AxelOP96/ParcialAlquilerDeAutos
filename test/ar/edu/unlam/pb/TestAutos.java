@@ -164,7 +164,7 @@ public class TestAutos {
 	    agencia.agregarGaraje(garaje1);
 	    Auto auto1 = new Auto("ABC123", "Toyota", "Corolla", 2020, 2500.0, garaje1, new ArrayList<Alquiler>(), 250.0);
 	    agencia.registrarAuto(auto1);
-	    assertTrue(agencia.devolverAuto(auto1));
-	    assertFalse(garaje1.getAutosDisponibles(null, null).contains(auto1));
+	    assertTrue("Se esperaba que el método devolverAuto devolviera true", agencia.devolverAuto(auto1));
+	    assertFalse("El auto devuelto no debería estar en la lista de autos disponibles en el garaje", garaje1.getAutosDisponibles(null, null).contains(auto1));
 	}
 }
