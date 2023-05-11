@@ -456,7 +456,7 @@ public class TestReserva {
 		
 		Reserva reserva1 = ag.alquilarAuto(1, cliente1, auto1, 10);
 		
-		Boolean SE_CAMBIO_CORRECTAMENTE = ag.cambiarAuto(reserva1, auto3);
+		Boolean SE_CAMBIO_CORRECTAMENTE = ag.cambiarAutoDeLaReserva(reserva1, auto3);
 		
 		
 		// Validaciones

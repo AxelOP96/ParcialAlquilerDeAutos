@@ -15,6 +15,7 @@ public class Agencia {
     private HashSet<Auto> autos ;		//Autos disponibles
 	private HashSet<Cliente> clientes;
 	private HashSet<Reserva> reservas;
+	
 	private Date fechaFin;
 	private Date fechaInicio;
 
@@ -78,13 +79,17 @@ public class Agencia {
 	}
 	
 	public Reserva alquilarAuto(Integer codReserva,Cliente cliente, Auto auto,Integer dias) {
-		
-		Reserva reserva = new Reserva(codReserva, cliente, auto, dias);
-        reservas.add(reserva);
-        auto.reservar();
-        autos.remove(auto);
-        auto.getGaraje().disminuirCantidadEspaciosDisponibles();//Hacer test de este
-        return reserva;
+		if(autos.contains(auto)) {
+			
+			Reserva reserva = new Reserva(codReserva, cliente, auto, dias);
+			autos.remove(auto);
+			reservas.add(reserva);
+			auto.reservar();
+			auto.getGaraje().disminuirCantidadEspaciosDisponibles();//Hacer test de este
+			return reserva;
+		}
+		else
+			return null;
 	}
 	public String getRazonSocial() {
 		return razonSocial;
@@ -132,8 +137,8 @@ public class Agencia {
 
 
 
-	public Boolean elAutoEstaDisponible(Auto auto1) {
-		return this.autos.contains(auto1);
+	public Boolean elAutoEstaDisponible(Auto auto) {
+		return this.autos.contains(auto);
 	}
 
 
@@ -344,5 +349,26 @@ public class Agencia {
 	            .filter(auto -> auto.estaDisponible(fechaInicio, fechaFin))
 	            .sorted(Comparator.comparingDouble(Auto::getPrecio))
 	            .collect(Collectors.toList());
-	}}
+	}
+	public Boolean cambiarAutoDeLaReserva(Reserva reserva1, Auto auto3) {
+		if(this.autos.add(reserva1.getAuto())) {
+			reserva1.setAuto(auto3);
+			return true;
+		}else {
+			return null;
+		}
+			
+		
+	}
+	
+	public HashSet<Reserva> getReservas() {
+		return reservas;
+	}
+	public void setReservas(HashSet<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+	
+	
+
+}
 
