@@ -25,7 +25,7 @@ public class TestGaraje {
     public void queNoSePuedaRegistrarDosGarajesConLaMismaDireccion() {
         Garaje garaje1 = new Garaje(1, "Av. Siempreviva 742", 5);
         Garaje garaje2 = new Garaje(2, "Av. Siempreviva 742", 7);
-        Agencia agencia = new Agencia("MiAgencia");
+        Agencia agencia = new Agencia("MiAgencia", 12345);
         agencia.agregarGaraje(garaje1);
         assertFalse(agencia.agregarGaraje(garaje2));
     }

@@ -21,10 +21,16 @@ public class Agencia {
 		reservas = new HashSet<>();
 	}
 
+	public Agencia(String razonSocial, Integer cuit, HashSet<Garaje> garajesDisponibles) {
+		// TODO Auto-generated constructor stub
+		this.razonSocial = razonSocial;
+		this.cuit = cuit;
+		this.garajes = garajesDisponibles;
+		this.autos = autos;
+		this.clientes = clientes;
+	}
 
-
-	public Agencia(String razonSocial,Integer cuit, HashSet<Garaje> garajes, 
-													 HashSet<Auto> autos) {
+	public Agencia(String razonSocial,Integer cuit, HashSet<Garaje> garajes, HashSet<Auto> autos) {
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 		this.garajes = garajes;
@@ -192,4 +198,9 @@ public class Agencia {
         }
         return false;
     }
+
+	public void agregarCliente(Cliente cliente) {
+		// TODO Auto-generated method stub
+		this.clientes.add(cliente);
+	}
     }

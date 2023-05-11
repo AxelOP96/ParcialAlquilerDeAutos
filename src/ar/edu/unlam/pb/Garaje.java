@@ -16,7 +16,12 @@ public class Garaje {
 	    this.autosEnElGaraje = new ArrayList<Auto>();
 	}
 
-	
+	public Garaje(Integer id, String direccion, Integer espaciosDisponibles, HashSet<Auto> autosDisponibles) {
+		// TODO Auto-generated constructor stub
+		this.idGaraje = id;
+		this.direccion = direccion;
+		this.espaciosDisponibles = espaciosDisponibles;
+	}
 	
 	public boolean agregarAuto(Auto auto) {
 		if (espaciosDisponibles > 0) {
