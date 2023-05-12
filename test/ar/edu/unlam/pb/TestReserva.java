@@ -17,7 +17,8 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia ag = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -71,7 +72,8 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia ag = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -132,7 +134,8 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia ag = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -192,7 +195,8 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia ag = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -249,7 +253,8 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia ag = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -306,7 +311,8 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia ag = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -360,7 +366,8 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia ag = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -421,7 +428,8 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia ag = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -472,7 +480,8 @@ public class TestReserva {
 	public void queSePuedaCancelarUnaReserva() {
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia agencia = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 		
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -492,18 +501,19 @@ public class TestReserva {
 		Cliente cliente1 = new Cliente(dni, apellidoNombre, direccionC, telefono);
 		
 		Integer diasReserva = 20; 
-		agencia.registrarUnAuto(auto1, garaje1);
-		agencia.agregarCliente(cliente1);
-		Reserva reserva01 = agencia.alquilarAuto(dni, cliente1, auto1, diasReserva);
+		ag.registrarUnAuto(auto1, garaje1);
+		ag.agregarCliente(cliente1);
+		Reserva reserva01 = ag.alquilarAuto(dni, cliente1, auto1, diasReserva);
 		
-		assertNull(agencia.cancelarReserva(reserva01));
+		assertNull(ag.cancelarReserva(reserva01));
 	}
 	
 	@Test
 	public void queSePuedaCambiarLaCantidadDeDiasDelAlquilerDeUnaReserva() {
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia agencia = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
 		
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -523,20 +533,20 @@ public class TestReserva {
 		Cliente cliente1 = new Cliente(dni, apellidoNombre, direccionC, telefono);
 		
 		Integer diasReserva = 20; 
-		agencia.registrarUnAuto(auto1, garaje1);
-		agencia.agregarCliente(cliente1);
-		Reserva reserva01 = agencia.alquilarAuto(dni, cliente1, auto1, diasReserva);
+		ag.registrarUnAuto(auto1, garaje1);
+		ag.agregarCliente(cliente1);
+		Reserva reserva01 = ag.alquilarAuto(dni, cliente1, auto1, diasReserva);
 		Integer diasEsperados = 15;
 		reserva01.setDias(15);
 		assertEquals(diasEsperados, reserva01.getDias());
 	}
-
-//	queSePuedaBuscarEnLaListaDeReservasLaCantidadDeAutosReservadosDeUnaMarca,
 	@Test
 	public void queSePuedaBuscarEnLaListaDeReservasLaCantidadDeAutosReservadosDeUnaMarca() {
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia agencia = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia agencia = new Agencia(razonSocial, cuit, garajesDisponibles);
+		
 		
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -563,13 +573,13 @@ public class TestReserva {
 		Integer cantidadMarcasBuscadas = agencia.getCantidadMarcas("Renauld kwid");
 		assertEquals(marcasEsperadas, cantidadMarcasBuscadas);
 	}
-	
-//	queSeBusqueAlClienteQueHisoMasReservasEnLaAgencia,
 	@Test
 	public void queSeBusqueAlClienteQueHizoMasReservasEnLaAgencia() {
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		Agencia agencia = new Agencia(razonSocial, cuit);
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		Agencia agencia = new Agencia(razonSocial, cuit, garajesDisponibles);
+		
 		
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -595,13 +605,6 @@ public class TestReserva {
 		
 		assertNull(agencia.buscarClienteConMasReservas());
 	}
-	
-//	queSePuedaBuscarLaMarcaDeAutoConMasReservas.
-//	
-//	
-//	queSepaCuantasReservasSeHisoEnLaAgencia,NOO<<
-	
-	
 	
 	
 }

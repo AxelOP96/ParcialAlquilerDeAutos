@@ -167,4 +167,13 @@ public class TestAutos {
 	    assertTrue("Se esperaba que el método devolverAuto devolviera true", agencia.devolverAuto(auto1));
 	    assertFalse("El auto devuelto no debería estar en la lista de autos disponibles en el garaje", garaje1.getAutosDisponibles(null, null).contains(auto1));
 	}
+	
+	/*
+	 * queSePuedaEliminarUnAuto()
+queSePuedaCambiarDeGarajeUnAuto()
+queSePuedaCambiarDeAuto()
+queSePuedaBuscarUnAutoPorMarca()
+queSePuedaBuscarUnAutoPorPatente()
+queSePuedaDevolverUnAuto()*/
+	
 }

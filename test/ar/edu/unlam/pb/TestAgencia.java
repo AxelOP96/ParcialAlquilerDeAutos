@@ -13,7 +13,7 @@ public class TestAgencia {
 	public void queSePuedaIncluirUnGarajeAUnaAgencia() {
 	    String razonSocial = "SA";
 	    Integer cuit = 19919919;
-	    HashSet<Garaje> garajesDisponibles = new HashSet<>();
+	    ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
 	    
 	    Integer id = 000001;
 	    String direccion = "CALLE FALSA 123";
@@ -30,7 +30,7 @@ public class TestAgencia {
 		String razonSocial = "SA";
 		Integer cuit = 19919919;
 		HashSet <Auto> autosDisponibles= new HashSet<>();
-		HashSet <Garaje> garajesDisponibles = new HashSet<>();
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
 		
 		Integer dni = 000001;
 		String direccion = "CALLE FALSA 123";
@@ -47,4 +47,12 @@ public class TestAgencia {
 	    
 
 	}
+	
+	@Test
+	public void queSePuedaIncluirUnAutoDeportivoAUnaAgencia() {
+		
+	}
+	
+	
+	
 }

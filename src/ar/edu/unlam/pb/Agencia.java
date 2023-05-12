@@ -193,7 +193,13 @@ public class Agencia {
 
 	private Auto buscarAuto(String patente) {
 		// TODO Auto-generated method stub
-		return null;
+		Auto buscado = null;
+		for(Garaje garaje: garajes) {
+			if(garaje.buscarAutoPorPatente(patente) !=null) {
+				buscado = garaje.buscarAutoPorPatente(patente);
+			}
+		}
+		return buscado;
 	}
 
 	public boolean cambiarPrecio(String modelo, double nuevoPrecio) {
@@ -229,8 +235,8 @@ public class Agencia {
 	}
 
 	public boolean cambiarAuto(String string, Auto auto2) {
-		
-		return false;
+		Boolean cambiado = false;
+		return cambiado;
 	}
 
 	public ArrayList<Auto> buscarAutoPorMarca(String marca) {
