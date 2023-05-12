@@ -182,11 +182,15 @@ public class Auto {
 		public void setAnio(int anio) {
 			this.anio = anio;
 		}
+		
+		//Herencia
 		public class AutoDeportivo extends Auto {
 		    private int caballosDeFuerza;
 		    private boolean turbo;
+		    private String patente;
 
-		    public AutoDeportivo(String patente, String marca, String modelo, int anio, double precio, Garaje garaje, ArrayList<Alquiler> alquileres, double precioPorDia, int caballosDeFuerza, boolean turbo) {
+		    public AutoDeportivo(String patente, String marca, String modelo, int anio, double precio, Garaje garaje, 
+		    		ArrayList<Alquiler> alquileres, double precioPorDia, int caballosDeFuerza, boolean turbo) {
 		        super(patente, marca, modelo, anio, precio, garaje, alquileres, precioPorDia);
 		        this.caballosDeFuerza = caballosDeFuerza;
 		        this.turbo = turbo;

@@ -27,7 +27,8 @@ public class TestGaraje {
 
         Garaje garaje1 = new Garaje(1, "Av. Siempreviva 742", 5);
         Garaje garaje2 = new Garaje(2, "Av. Siempreviva 742", 7);
-        Agencia agencia = new Agencia("MiAgencia", 12345);
+        ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+        Agencia agencia = new Agencia("MiAgencia", 12345, garajesDisponibles);
 
         
         agencia.agregarGaraje(garaje1);
@@ -93,7 +94,7 @@ public class TestGaraje {
         garaje.quitarAuto(auto1);
         assertEquals(1, garaje.getAutosEnElGaraje().size());
     }
-    //hijo de puta
+    
     @Test
     public void testBuscarAuto() {
         Garaje garaje = new Garaje(1, "Calle 123", 5, new ArrayList<>());
