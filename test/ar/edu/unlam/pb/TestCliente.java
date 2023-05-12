@@ -66,5 +66,6 @@ public class TestCliente {
 		cliente.eliminarReserva(reserva2);
 		assertEquals(cliente.getHistorial().size(), 0);
 	}
+	
 
 }
