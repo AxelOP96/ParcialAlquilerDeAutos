@@ -14,38 +14,16 @@ public class Agencia {
 	private HashSet<Cliente> clientes;
 	private HashSet<Reserva> reservas;
 
-    
 	public Agencia(String razonSocial, Integer l, ArrayList<Garaje> garajesDisponibles2) {
         this.razonSocial = razonSocial;
         this.cuit = l;
         this.garajesDisponibles = new ArrayList<>();
         this.garajes = new HashSet<>();
+        this.autos = autos;
+        this.clientes = new HashSet();
+        reservas = new HashSet<>();
     }
-    public Agencia(String razonSocial, Integer cuit) {
-		this.razonSocial = razonSocial;
-		this.cuit = cuit;
-		garajes = new HashSet<>();
-		autos = new HashSet<>();
-		clientes = new HashSet<>();
-		reservas = new HashSet<>();
-	}
-
-	public Agencia(String razonSocial, Integer cuit, HashSet<Garaje> garajesDisponibles) {
-		// TODO Auto-generated constructor stub
-		this.razonSocial = razonSocial;
-		this.cuit = cuit;
-		this.garajes = garajesDisponibles;
-		this.autos = autos;
-		this.clientes = new HashSet();
-	}
-
-	public Agencia(String razonSocial,Integer cuit, HashSet<Garaje> garajes, HashSet<Auto> autos) {
-		this.razonSocial = razonSocial;
-		this.cuit = cuit;
-		this.garajes = garajes;
-		this.autos = autos;
-		clientes = new HashSet<>();
-	}
+//	
     public boolean agregarGaraje1(Garaje garaje) {
         if (garajeConMismaDireccion(garaje)) {
             return false;
