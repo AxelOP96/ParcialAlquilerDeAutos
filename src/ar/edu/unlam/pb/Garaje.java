@@ -19,15 +19,13 @@ public class Garaje {
 	private List<Auto> autos;
 
 
-	public Garaje(Integer idGaraje, String direccion, Integer espaciosDisponibles,ArrayList<Auto> autosEnElGaraje) {
+	public Garaje(Integer idGaraje, String direccion, Integer espaciosDisponibles, ArrayList<Auto> autosEnElGaraje) {
 	    this.setIdGaraje(idGaraje);
 	    this.direccion = direccion;
 	    this.espaciosDisponibles = espaciosDisponibles;
 	    this.autosEnElGaraje = new ArrayList<Auto>(autosEnElGaraje);
 	    this.autosDisponibles = new ArrayList<>(autosDisponibles);
 	    this.autos = new ArrayList<Auto>();
-	    
-	    
 	}
 
 	public void agregarGaraje(Garaje garaje) {

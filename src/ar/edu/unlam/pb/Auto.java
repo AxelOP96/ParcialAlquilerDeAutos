@@ -182,5 +182,50 @@ public class Auto {
 		public void setAnio(int anio) {
 			this.anio = anio;
 		}
+		public class AutoDeportivo extends Auto {
+		    private int caballosDeFuerza;
+		    private boolean turbo;
+
+		    public AutoDeportivo(String patente, String marca, String modelo, int anio, double precio, Garaje garaje, ArrayList<Alquiler> alquileres, double precioPorDia, int caballosDeFuerza, boolean turbo) {
+		        super(patente, marca, modelo, anio, precio, garaje, alquileres, precioPorDia);
+		        this.caballosDeFuerza = caballosDeFuerza;
+		        this.turbo = turbo;
+		    }
+
+		    public int getCaballosDeFuerza() {
+		        return caballosDeFuerza;
+		    }
+
+		    public void setCaballosDeFuerza(int caballosDeFuerza) {
+		        this.caballosDeFuerza = caballosDeFuerza;
+		    }
+
+		    public boolean isTurbo() {
+		        return turbo;
+		    }
+
+		    public void setTurbo(boolean turbo) {
+		        this.turbo = turbo;
+		    }
+
+		    @Override
+		    public double getPrecioPorDia() {
+		        // Los autos deportivos tienen un 20% de aumento en el precio de alquiler
+		        return super.getPrecioPorDia() * 1.2;
+		    }
+
+		    @Override
+		    public String toString() {
+		        return "AutoDeportivo{" +
+		                "patente='" + this.getPatente() + '\'' +
+		                ", marca='" + this.getMarca() + '\'' +
+		                ", modelo='" + this.getModelo() + '\'' +
+		                ", anio=" + this.getAnio() +
+		                ", precio=" + this.getPrecio() +
+		                ", caballosDeFuerza=" + caballosDeFuerza +
+		                ", turbo=" + turbo +
+		                '}';
+		    }
+		}
 
 }
