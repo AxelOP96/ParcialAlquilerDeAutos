@@ -276,17 +276,28 @@ public class Agencia {
 	    return false;
 	}
 	private Auto buscarAutoEnGarajes(String patente) {
+		Auto buscado = null;
 	    for (Garaje garaje : garajesDisponibles) {
 	        Auto auto = garaje.buscarAuto(patente);
 	        if (auto != null) {
-	            return auto;
+	            buscado = auto;
 	        }
 	    }
-	    return null;
+	    return buscado;
 	}
 
-	public boolean cambiarAuto(String string, Auto auto2) {
+	public boolean cambiarAuto(String patente, Auto auto2) {
 		Boolean cambiado = false;
+		Auto buscado = null;
+	    for (Garaje garaje : garajesDisponibles) {
+	        Auto auto = garaje.buscarAuto(patente);
+	        if (auto != null) {
+	            buscado = auto;
+	            garaje.quitarAuto(auto);
+	            garaje.agregarAuto(auto2);
+	            cambiado = true;
+	        }
+	    }
 		return cambiado;
 	}
 
@@ -319,14 +330,15 @@ public class Agencia {
 	    return cantidad;
 	}
 	private Alquiler buscarAlquilerPorAuto(Auto auto) {
+		Alquiler alquilado = null;
 	    for (Garaje garaje : garajes) {
 	        for (Alquiler alquiler : garaje.getAlquileres()) {
 	            if (alquiler.getAuto().equals(auto)) {
-	                return alquiler;
+	                alquilado = alquiler;
 	            }
 	        }
 	    }
-	    return null;
+	    return alquilado;
 	}
 
 	public List<Auto> mostrarAutosDisponiblesOrdenadosPorPrecio() {

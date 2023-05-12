@@ -494,11 +494,11 @@ public class TestReserva {
 		String marca = "Renauld kwid";
 		String modelo = "Climber";
 		Double precioPorDia = 10000.0;
-		Auto auto1 = new Auto(patente, marca, modelo, precioPorDia);
-		Auto auto2 = new Auto("USY 550", "Chevrolet","Camaro", 10000.0);
-		Auto auto3 = new Auto("USS 770", "Chevrolet", "Equinox", 10000.0);
-		Auto auto4 = new Auto("BUS 850", "Volkswagen","Gol", 10000.0);
-		Auto auto5 = new Auto("CAR 970", "Volkswagen", "Amarok", 10000.0);
+		Auto auto1 = new Auto(patente, marca, modelo, precioPorDia, garaje1);
+		Auto auto2 = new Auto("USY 550", "Chevrolet","Camaro", 10000.0, garaje1);
+		Auto auto3 = new Auto("USS 770", "Chevrolet", "Equinox", 10000.0, garaje1);
+		Auto auto4 = new Auto("BUS 850", "Volkswagen","Gol", 10000.0, garaje1);
+		Auto auto5 = new Auto("CAR 970", "Volkswagen", "Amarok", 10000.0, garaje1);
 		
 		Integer dni = 34535345; 
 		String apellidoNombre = "Diego Fernandez";
@@ -554,11 +554,11 @@ public class TestReserva {
 		String marca = "Renauld kwid";
 		String modelo = "Climber";
 		Double precioPorDia = 10000.0;
-		Auto auto1 = new Auto(patente, marca, modelo, precioPorDia);
-		Auto auto2 = new Auto("USY 550", "Chevrolet","Camaro", 10000.0);
-		Auto auto3 = new Auto("USS 770", "Chevrolet", "Equinox", 10000.0);
-		Auto auto4 = new Auto("BUS 850", "Volkswagen","Gol", 10000.0);
-		Auto auto5 = new Auto("CAR 970", "Volkswagen", "Amarok", 10000.0);
+		Auto auto1 = new Auto(patente, marca, modelo, precioPorDia, garaje1);
+		Auto auto2 = new Auto("USY 550", "Chevrolet","Camaro", 10000.0, garaje1);
+		Auto auto3 = new Auto("USS 770", "Chevrolet", "Equinox", 10000.0, garaje1);
+		Auto auto4 = new Auto("BUS 850", "Volkswagen","Gol", 10000.0, garaje1);
+		Auto auto5 = new Auto("CAR 970", "Volkswagen", "Amarok", 10000.0, garaje1);
 		
 		Integer dni = 34535345; 
 		String apellidoNombre = "Diego Fernandez";
