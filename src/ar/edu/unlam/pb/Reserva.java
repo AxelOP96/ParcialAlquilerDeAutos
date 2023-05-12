@@ -8,6 +8,7 @@ public class Reserva {
 	private Integer dias;
 	private Double precioTotal;
 	
+	
 	public Reserva(Integer codReserva, Cliente cliente, Auto auto,Integer dias) {
 		this.codReserva = codReserva;
 		this.cliente = cliente;
