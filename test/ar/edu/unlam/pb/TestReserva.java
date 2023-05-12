@@ -466,10 +466,7 @@ public class TestReserva {
 		
 		
 	}
-	
-	
-//	queSePuedaCancelarUnaReserva,  p<<<
-//	queSePuedaCambiarDeAutoEnUnaReserva, p<<<
+
 //	queSePuedaCambiarLaCantidadDeDiasDelAlquilerDeUnaReserva,p<<
 //	queSeSepaCuantoSeRecaudoEnLaAgenciaDespuesDeVariasReservas,p<<
 //	queSePuedaBuscarEnLaListaDeReservasLaCantidadDeAutosReservadosDeUnaMarca,
@@ -477,6 +474,7 @@ public class TestReserva {
 //	queSePuedaBuscarLaMarcaDeAutoConMasReservas.
 //	
 //	
+//	queSePuedaCancelarUnaReserva,  p<<<
 //	queSepaCuantasReservasSeHisoEnLaAgencia,NOO<<
 	
 	
