@@ -19,7 +19,7 @@ public class Agencia {
         this.cuit = l;
         this.garajesDisponibles = new ArrayList<>();
         this.garajes = new HashSet<>();
-        this.autos = autos;
+        this.autos = new HashSet<>();
         this.clientes = new HashSet();
         reservas = new HashSet<>();
     }

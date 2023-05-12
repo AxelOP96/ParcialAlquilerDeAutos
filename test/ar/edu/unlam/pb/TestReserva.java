@@ -350,11 +350,11 @@ public class TestReserva {
 		Integer codReserva = 1;
 		Integer diasAlquiler = 12;
 		Reserva reserva1 = ag.alquilarAuto(codReserva, cliente1, auto5, diasAlquiler);
-		//Con mismo codidigo de reserva
+		//Con mismo codigo de reserva
 		Reserva segundaReserva = ag.alquilarAuto(codReserva, cliente1, auto3, 10);
 			
 		// Validaciones
-
+		Integer reservasEsperadas = 1;
 		assertEquals(1,  ag.getReservas().size());
 		
 	}
