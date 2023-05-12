@@ -13,17 +13,55 @@ public class Agencia {
     private HashSet<Auto> autos;
 	private HashSet<Cliente> clientes;
 	private HashSet<Reserva> reservas;
+	private Double recaudacion;
+
 
 	public Agencia(String razonSocial, Integer l, ArrayList<Garaje> garajesDisponibles2) {
         this.razonSocial = razonSocial;
         this.cuit = l;
         this.garajesDisponibles = new ArrayList<>();
         this.garajes = new HashSet<>();
-        this.autos = new HashSet<>();
-        this.clientes = new HashSet();
-        reservas = new HashSet<>();
+
+        autos = new HashSet<>();
+		clientes = new HashSet<>();
+		reservas = new HashSet<>();
+		recaudacion = 0.0;
     }
-//	
+    public Agencia(String razonSocial, Integer cuit) {
+		this.razonSocial = razonSocial;
+		this.cuit = cuit;
+		garajes = new HashSet<>();
+		autos = new HashSet<>();
+		clientes = new HashSet<>();
+		reservas = new HashSet<>();
+		recaudacion = 0.0;
+	}
+
+	public Agencia(String razonSocial, Integer cuit, HashSet<Garaje> garajesDisponibles) {
+		// TODO Auto-generated constructor stub
+		this.razonSocial = razonSocial;
+		this.cuit = cuit;
+		this.garajes = garajesDisponibles;
+		this.autos = autos;
+		this.clientes = new HashSet();
+		autos = new HashSet<>();
+		clientes = new HashSet<>();
+		reservas = new HashSet<>();
+		recaudacion = 0.0;
+	}
+
+	public Agencia(String razonSocial,Integer cuit, HashSet<Garaje> garajes, HashSet<Auto> autos) {
+		this.razonSocial = razonSocial;
+		this.cuit = cuit;
+		this.garajes = garajes;
+		this.autos = autos;
+		clientes = new HashSet<>();
+		this.autos = new HashSet<>();
+		this.clientes = new HashSet();
+		reservas = new HashSet<>();
+		recaudacion = 0.0;
+	}
+	
     public boolean agregarGaraje1(Garaje garaje) {
         if (garajeConMismaDireccion(garaje)) {
             return false;
@@ -52,13 +90,23 @@ public class Agencia {
 	}
 	
 	public Reserva alquilarAuto(Integer codReserva,Cliente cliente, Auto auto,Integer dias) {
-		
-		Reserva reserva = new Reserva(codReserva, cliente, auto, dias);
-        reservas.add(reserva);
-        auto.reservar();
-        autos.remove(auto);
-        auto.getGaraje().disminuirCantidadEspaciosDisponibles();//Hacer test de este
-        return reserva;
+		if(this.autos.contains(auto)) {
+			
+			Reserva reserva = new Reserva(codReserva, cliente, auto, dias);
+			reservas.add(reserva);
+			auto.reservar();
+			autos.remove(auto);
+			auto.getGaraje().disminuirCantidadEspaciosDisponibles();//Hacer test de este
+			this.recaudacion += reserva.getPrecioTotal();
+			
+			return reserva;
+			
+			
+			
+		}
+		else {
+			return null;
+		}
 	}
 	public String getRazonSocial() {
 		return razonSocial;
@@ -332,6 +380,13 @@ public class Agencia {
 			}
 		}
 		return buscado;
+	}
+	
+	public Double getRecaudacion() {
+		return recaudacion;
+	}
+	public void setRecaudacion(Double recaudacion) {
+		this.recaudacion = recaudacion;
 	}
 }
 

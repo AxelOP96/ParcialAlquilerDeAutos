@@ -25,6 +25,7 @@ public class Reserva {
 		else {
 			this.precioTotal = auto.getPrecioPorDia()*dias;
 		}
+		
 	}			
 		
 		

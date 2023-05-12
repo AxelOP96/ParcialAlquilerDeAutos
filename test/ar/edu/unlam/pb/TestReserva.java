@@ -17,8 +17,7 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia ag = new Agencia(razonSocial, cuit);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -60,6 +59,8 @@ public class TestReserva {
 		final Integer AUTOS_DISPONIBLES_DESPUES_DE_LA_RESERVA = ag.cantidaDeAutosDisponibles();
 		
 		// Validaciones
+		assertNotNull(reserva1);
+		
 		assertEquals((Integer)5, AUTOS_DISPONIBLES_INICIAL);
 		assertEquals((Integer)4,AUTOS_DISPONIBLES_DESPUES_DE_LA_RESERVA);
 	}
@@ -72,8 +73,7 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia ag = new Agencia(razonSocial, cuit);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -117,8 +117,11 @@ public class TestReserva {
 		final Integer AUTOS_DISPONIBLES_DESPUES_DE_LA_DEVOLUCION = ag.cantidaDeAutosDisponibles();
 		
 		// Validaciones
+		assertNotNull(reserva1);
+		
 		assertEquals((Integer)5, AUTOS_DISPONIBLES_INICIAL);
 		assertEquals((Integer)4,AUTOS_DISPONIBLES_DESPUES_DE_LA_RESERVA);
+		
 		
 		
 		assertTrue(AUTO_DEBUELTO);
@@ -134,8 +137,7 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia ag = new Agencia(razonSocial, cuit);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -188,15 +190,13 @@ public class TestReserva {
 		
 	}
 
-	
 	@Test
 	public void queALosCLientesVipSeLeHaganUnDescuentoDel10PorCientoEnSusReservasSiguientes() {
 
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia ag = new Agencia(razonSocial, cuit);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -242,6 +242,8 @@ public class TestReserva {
 
 		// Validaciones
 
+		
+		assertNotNull(reserva1);
 		assertTrue(cliente1.getEsVip());
 		assertEquals(PRECIO_TOTAL_RESERVA2_ESPERADO, PRECIO_TOTAL_RESERVA2);
 		
@@ -253,8 +255,7 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia ag = new Agencia(razonSocial, cuit);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -292,15 +293,17 @@ public class TestReserva {
 		Integer codReserva = 1;
 		Integer diasAlquiler = 12;
 		Reserva reserva1 = ag.alquilarAuto(codReserva, cliente1, auto5, diasAlquiler);
+		
 		//Reserva del mismo auto
 		Boolean EL_AUTO_ESTA_DISPONIBLE = ag.elAutoEstaDisponible(auto5);
 		Reserva segundaReserva = ag.alquilarAuto(2, cliente1, auto5, 10);
 		
 
 		// Validaciones
+		assertNotNull(reserva1);
+		assertNull(segundaReserva);
 
 		assertFalse(EL_AUTO_ESTA_DISPONIBLE);
-		assertNotNull(segundaReserva);
 		assertFalse(ag.getReservas().contains(auto5));
 		
 	}
@@ -311,8 +314,7 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia ag = new Agencia(razonSocial, cuit);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -350,15 +352,17 @@ public class TestReserva {
 		Integer codReserva = 1;
 		Integer diasAlquiler = 12;
 		Reserva reserva1 = ag.alquilarAuto(codReserva, cliente1, auto5, diasAlquiler);
-		//Con mismo codigo de reserva
+		//Con mismo codidigo de reserva
 		Reserva segundaReserva = ag.alquilarAuto(codReserva, cliente1, auto3, 10);
 			
 		// Validaciones
-		Integer reservasEsperadas = 1;
+
+		assertNotNull(reserva1);
+		assertNotNull(segundaReserva);
+		
 		assertEquals(1,  ag.getReservas().size());
 		
 	}
-	
 	
 	@Test
 	public void queLaListaDeReservasHechasEnLaAgenciaSeHayanGuardadoDeFormaCorrecta() {
@@ -366,8 +370,7 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia ag = new Agencia(razonSocial, cuit);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -420,7 +423,6 @@ public class TestReserva {
 		
 	}
 	
-	
 	@Test
 	public void queSePuedaCambiarDeAutoEnUnaReserva() {
 
@@ -428,8 +430,7 @@ public class TestReserva {
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia ag = new Agencia(razonSocial, cuit);
 
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -476,12 +477,135 @@ public class TestReserva {
 		
 	}
 	
-	@Test
+	@Test 
+	public void queSePuedaSaberLoRecaudadoPorLaAgenciaDespuesDeVariasReservasDeUnClienteVipDeFormaCorrecta() {
+		
+		// Preparacion de datos
+		String razonSocial = "Rodriguez y cia S.R.L";
+		Integer cuit = 250686778;
+		Agencia ag = new Agencia(razonSocial, cuit);
+
+		Integer idGaraje = 1;
+		String direccion = "Av. Victoria 123";
+		Integer espaciosDisponibles = 10;
+		Garaje garaje1 = new Garaje(idGaraje, direccion, espaciosDisponibles);
+
+		String patente = "USD 660";
+		String marca = "Renauld kwid";
+		String modelo = "Climber";
+		Double precioPorDia = 10000.0;
+		Auto auto1 = new Auto(patente, marca, modelo, precioPorDia);
+		Auto auto2 = new Auto("USY 550", "Chevrolet","Camaro", 10000.0);
+		Auto auto3 = new Auto("USS 770", "Chevrolet", "Equinox", 10000.0);
+		Auto auto4 = new Auto("BUS 850", "Volkswagen","Gol", 10000.0);
+		Auto auto5 = new Auto("CAR 970", "Volkswagen", "Amarok", 10000.0);
+		
+		Integer dni = 34535345; 
+		String apellidoNombre = "Diego Fernandez";
+		String direccionC = "Av Libertadores 1234";
+		Integer telefono = 462415441;
+		Cliente cliente1 = new Cliente(dni, apellidoNombre, direccionC, telefono);
+		
+		// Acciones
+		ag.registrarUnGaraje(garaje1);
+		
+		ag.registrarUnAuto(auto1, garaje1);
+		ag.registrarUnAuto(auto2, garaje1);
+		ag.registrarUnAuto(auto3, garaje1);
+		ag.registrarUnAuto(auto4, garaje1);
+		ag.registrarUnAuto(auto5, garaje1);
+		
+		ag.agregarCliente(cliente1);
+		
+		Reserva reserva1 = ag.alquilarAuto(1, cliente1, auto1, 12);
+		Reserva reserva2 = ag.alquilarAuto(2, cliente1, auto2, 12);
+		Reserva reserva3 = ag.alquilarAuto(3, cliente1, auto3, 12);
+		
+		Double RECAUDACION_ESPERADA = 12*10000.0 +12*10000*0.9+12*10000*0.9;
+		Double RECAUDACION_OBTENIDA = ag.getRecaudacion();
+		
+		
+		// Validaciones
+		
+		assertNotNull(reserva1);
+		assertNotNull(reserva2);
+		assertNotNull(reserva3);
+		
+		assertTrue(cliente1.getEsVip());
+		assertEquals(RECAUDACION_ESPERADA, RECAUDACION_OBTENIDA);
+		
+	}
+	
+	
+	@Test 
+	public void queSePuedaMostrarLasReservasHechas() {
+		
+		// Preparacion de datos
+		String razonSocial = "Rodriguez y cia S.R.L";
+		Integer cuit = 250686778;
+		Agencia ag = new Agencia(razonSocial, cuit);
+
+		Integer idGaraje = 1;
+		String direccion = "Av. Victoria 123";
+		Integer espaciosDisponibles = 10;
+		Garaje garaje1 = new Garaje(idGaraje, direccion, espaciosDisponibles);
+
+		String patente = "USD 660";
+		String marca = "Renauld kwid";
+		String modelo = "Climber";
+		Double precioPorDia = 10000.0;
+		Auto auto1 = new Auto(patente, marca, modelo, precioPorDia);
+		Auto auto2 = new Auto("USY 550", "Chevrolet","Camaro", 10000.0);
+		Auto auto3 = new Auto("USS 770", "Chevrolet", "Equinox", 10000.0);
+		Auto auto4 = new Auto("BUS 850", "Volkswagen","Gol", 10000.0);
+		Auto auto5 = new Auto("CAR 970", "Volkswagen", "Amarok", 10000.0);
+		
+		Integer dni = 34535345; 
+		String apellidoNombre = "Diego Fernandez";
+		String direccionC = "Av Libertadores 1234";
+		Integer telefono = 462415441;
+		Cliente cliente1 = new Cliente(dni, apellidoNombre, direccionC, telefono);
+		
+		// Acciones
+		ag.registrarUnGaraje(garaje1);
+		
+		ag.registrarUnAuto(auto1, garaje1);
+		ag.registrarUnAuto(auto2, garaje1);
+		ag.registrarUnAuto(auto3, garaje1);
+		ag.registrarUnAuto(auto4, garaje1);
+		ag.registrarUnAuto(auto5, garaje1);
+		
+		ag.agregarCliente(cliente1);
+		
+		Reserva reserva1 = ag.alquilarAuto(1, cliente1, auto1, 12);
+		Reserva reserva2 = ag.alquilarAuto(2, cliente1, auto2, 12);
+		Reserva reserva3 = ag.alquilarAuto(3, cliente1, auto3, 12);
+		
+		
+		
+		// Validaciones
+		
+		assertNotNull(reserva1);
+		assertNotNull(reserva2);
+		assertNotNull(reserva3);
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+
+	
+	
+	
+	@Test//test alex
 	public void queSePuedaCancelarUnaReserva() {
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia agencia = new Agencia(razonSocial, cuit);
 		
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -501,19 +625,25 @@ public class TestReserva {
 		Cliente cliente1 = new Cliente(dni, apellidoNombre, direccionC, telefono);
 		
 		Integer diasReserva = 20; 
-		ag.registrarUnAuto(auto1, garaje1);
-		ag.agregarCliente(cliente1);
-		Reserva reserva01 = ag.alquilarAuto(dni, cliente1, auto1, diasReserva);
+		agencia.registrarUnAuto(auto1, garaje1);
+		agencia.agregarCliente(cliente1);
+		Reserva reserva01 = agencia.alquilarAuto(dni, cliente1, auto1, diasReserva);
 		
-		assertNull(ag.cancelarReserva(reserva01));
+		assertNull(agencia.cancelarReserva(reserva01));
 	}
 	
-	@Test
+
+	
+	
+	
+	
+	
+	
+	@Test//test alex
 	public void queSePuedaCambiarLaCantidadDeDiasDelAlquilerDeUnaReserva() {
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia ag = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Agencia agencia = new Agencia(razonSocial, cuit);
 		
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -533,20 +663,19 @@ public class TestReserva {
 		Cliente cliente1 = new Cliente(dni, apellidoNombre, direccionC, telefono);
 		
 		Integer diasReserva = 20; 
-		ag.registrarUnAuto(auto1, garaje1);
-		ag.agregarCliente(cliente1);
-		Reserva reserva01 = ag.alquilarAuto(dni, cliente1, auto1, diasReserva);
+		agencia.registrarUnAuto(auto1, garaje1);
+		agencia.agregarCliente(cliente1);
+		Reserva reserva01 = agencia.alquilarAuto(dni, cliente1, auto1, diasReserva);
 		Integer diasEsperados = 15;
 		reserva01.setDias(15);
 		assertEquals(diasEsperados, reserva01.getDias());
-	}
-	@Test
+	}//
+
+	@Test//alex
 	public void queSePuedaBuscarEnLaListaDeReservasLaCantidadDeAutosReservadosDeUnaMarca() {
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia agencia = new Agencia(razonSocial, cuit, garajesDisponibles);
-		
+		Agencia agencia = new Agencia(razonSocial, cuit);
 		
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -573,13 +702,13 @@ public class TestReserva {
 		Integer cantidadMarcasBuscadas = agencia.getCantidadMarcas("Renauld kwid");
 		assertEquals(marcasEsperadas, cantidadMarcasBuscadas);
 	}
-	@Test
+	
+
+	@Test// alex
 	public void queSeBusqueAlClienteQueHizoMasReservasEnLaAgencia() {
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
-		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
-		Agencia agencia = new Agencia(razonSocial, cuit, garajesDisponibles);
-		
+		Agencia agencia = new Agencia(razonSocial, cuit);
 		
 		Integer idGaraje = 1;
 		String direccion = "Av. Victoria 123";
@@ -603,8 +732,10 @@ public class TestReserva {
 		agencia.agregarCliente(cliente1);
 		Reserva reserva01 = agencia.alquilarAuto(dni, cliente1, auto1, diasReserva);
 		
-		assertNull(agencia.buscarClienteConMasReservas());
+		assertNull(agencia.buscarClienteConMasReservas());//No busca al cliente
 	}
+	
+	
 	
 	
 }
