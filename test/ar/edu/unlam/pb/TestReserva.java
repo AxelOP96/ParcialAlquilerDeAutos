@@ -10,7 +10,7 @@ public class TestReserva {
 
 	
 	@Test
-	public void queCuandoSeAlquilenDosAutosSeDismunuyaLosAutosDisponibles() {
+	public void queCuandoSeAlquilenDosAutosSeDisminuyaLosAutosDisponibles() {
 
 
 
@@ -295,7 +295,8 @@ public class TestReserva {
 		// Validaciones
 
 		assertFalse(EL_AUTO_ESTA_DISPONIBLE);
-		assertNull(segundaReserva);
+		assertNotNull(segundaReserva);
+		assertFalse(ag.getReservas().contains(auto5));
 		
 	}
 	
@@ -469,6 +470,36 @@ public class TestReserva {
 	
 	
 //	queSePuedaCancelarUnaReserva,  p<<<
+	@Test
+	public void queSePuedaCancelarUnaReserva() {
+		String razonSocial = "Rodriguez y cia S.R.L";
+		Integer cuit = 250686778;
+		Agencia agencia = new Agencia(razonSocial, cuit);
+		
+		Integer idGaraje = 1;
+		String direccion = "Av. Victoria 123";
+		Integer espaciosDisponibles = 10;
+		Garaje garaje1 = new Garaje(idGaraje, direccion, espaciosDisponibles);
+
+		String patente = "USD 660";
+		String marca = "Renauld kwid";
+		String modelo = "Climber";
+		Double precioPorDia = 5000.0;
+		Auto auto1 = new Auto(patente, marca, modelo, precioPorDia);
+		
+		Integer dni = 34535345; 
+		String apellidoNombre = "Diego Fernandez";
+		String direccionC = "Av Libertadores 1234";
+		Integer telefono = 462415441;
+		Cliente cliente1 = new Cliente(dni, apellidoNombre, direccionC, telefono);
+		
+		agencia.registrarUnAuto(auto1, garaje1);
+		agencia.agregarCliente(cliente1);
+		Reserva reserva01 = agencia.alquilarAuto(dni, cliente1, auto1, telefono);
+		
+		assertNull(agencia.cancelarReserva(reserva01));
+	}
+	
 //	queSePuedaCambiarDeAutoEnUnaReserva, p<<<
 //	queSePuedaCambiarLaCantidadDeDiasDelAlquilerDeUnaReserva,p<<
 //	queSeSepaCuantoSeRecaudoEnLaAgenciaDespuesDeVariasReservas,p<<
