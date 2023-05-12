@@ -7,6 +7,8 @@ import java.util.HashSet;
 
 import org.junit.Test;
 
+import ar.edu.unlam.pb.Auto.AutoDeportivo;
+
 public class TestAgencia {
 
 	@Test
@@ -50,7 +52,30 @@ public class TestAgencia {
 	
 	@Test
 	public void queSePuedaIncluirUnAutoDeportivoAUnaAgencia() {
+		String razonSocial = "SA";
+		Integer cuit = 19919919;
+		ArrayList <Alquiler> alquileres= new ArrayList<>();
+		ArrayList<Auto> autosEnElGaraje = new ArrayList<>();
+		ArrayList<Garaje> garajesDisponibles = new ArrayList<>();
+		Garaje garaje = new Garaje(1, "Calle 123", 5, autosEnElGaraje );
 		
+		Integer dni = 000001;
+		String direccion = "CALLE FALSA 123";
+		String nombreYApellido = "Juan Peres";
+		Integer telefono = 1122332233;
+		Cliente cliente = new Cliente(dni, direccion, nombreYApellido, telefono);
+		
+		Integer idReserva = 11111111;
+		String modelo = "Fiesta";
+		String marca =  "Ford";
+		Double precioPorDia = 500.5;
+		Integer dias = 20;
+		Auto auto = new Auto("ABS 123", marca, modelo,350.5, garaje); 
+		AutoDeportivo deportivo = auto.new AutoDeportivo("ABC 123", marca, modelo, 2023, 600.5, garaje, alquileres, precioPorDia, 800, false);
+		
+		Agencia agencia = new Agencia(razonSocial, cuit, garajesDisponibles);
+		agencia.registrarUnAuto(deportivo, garaje);
+		assertNotNull(agencia.buscarAutoPorPatente("ABC 123"));
 	}
 	
 	

@@ -16,7 +16,7 @@ public class Garaje {
 	private ArrayList<Auto> autosDisponibles = new ArrayList<>();
 	private ArrayList<Garaje> garajes = new ArrayList<>();
 	private ArrayList<Alquiler> alquileres = new ArrayList<>();
-	private List<Auto> autos;
+	private ArrayList<Auto> autos;
 
 
 	public Garaje(Integer idGaraje, String direccion, Integer espaciosDisponibles, ArrayList<Auto> autosEnElGaraje) {
@@ -27,23 +27,17 @@ public class Garaje {
 	    this.autosDisponibles = new ArrayList<>(autosDisponibles);
 	    this.autos = new ArrayList<Auto>();
 	}
-
-	public void agregarGaraje(Garaje garaje) {
-		this.garajes.add(garaje);
-	}
-
 	public Garaje(Integer idGaraje, String direccion, Integer espaciosDisponibles) {
 	    this.setIdGaraje(idGaraje);
 	    this.direccion = direccion;
 	    this.espaciosDisponibles = espaciosDisponibles;
 	    this.autosEnElGaraje = new ArrayList<Auto>();
 	}
+	public void agregarGaraje(Garaje garaje) {
+		this.garajes.add(garaje);
+	}
 
-	//public Garaje(Integer id, String direccion, Integer espaciosDisponibles, HashSet<Auto> autosDisponibles) {
-	//	this.setIdGaraje(id);
-//		this.direccion = direccion;
-	//	this.espaciosDisponibles = espaciosDisponibles;
-	//}
+	
  
 	
 	public boolean agregarAuto(Auto auto) {
@@ -65,14 +59,7 @@ public class Garaje {
 		return this.espaciosDisponibles > 0;
 	}
 
-	public Auto buscarAuto(String patente) {
-		for (Auto auto : this.autosEnElGaraje) {
-			if (auto.getPatente().equals(patente)) {
-				return auto;
-			}
-		}
-		return null;
-	}
+	
 	public String getDireccion() {
 		return this.direccion;
 	}
@@ -95,17 +82,28 @@ public class Garaje {
 		}
 		return garajesDisponibles;
 	}
-
+	public Auto buscarAuto(String patente) {
+		Auto autoBuscado = null;
+		for (Auto auto : this.autosEnElGaraje) {
+			if (auto.getPatente().equals(patente)) {
+				autoBuscado = auto;
+			}
+		}
+		return autoBuscado;
+	}
 //////////////////////////////////////////////////////////////////////////////////////////////
 	public Auto buscarAutoPorPatente(String patente) {
+		Auto auto = null;
 		ArrayList<Garaje> garajesDisponibles = this.getGarajesDisponibles();
 		for (Garaje garaje : garajesDisponibles) {
-			Auto auto = garaje.buscarAuto(patente);
+			if (garaje != null)
+				auto = garaje.buscarAuto(patente);
+			
 			if (auto != null) {
 				return auto;
 			}
 		}
-		return null;
+		return auto;
 	}
 
 	public List<Auto> ordenarAutosPorPrecio() {

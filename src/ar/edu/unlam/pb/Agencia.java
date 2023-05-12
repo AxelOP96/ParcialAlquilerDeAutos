@@ -113,12 +113,12 @@ public class Agencia {
 
 
 	public Auto buscarAutoPorPatente(String patente) {
-		
+		Auto autoBuscado = null;
 		for(Auto auto: autos) {
 			if(auto.getPatente().equals(patente))
-				return auto;
+				autoBuscado = auto;
 		}
-		return null;
+		return autoBuscado;
 	}
 
 
@@ -169,6 +169,9 @@ public class Agencia {
     }
 
     public void registrarAuto(Auto auto) {
+    	for(Auto listaDeAutos: autos) {
+    		listaDeAutos = auto;
+    	}
         for (Garaje garaje : garajesDisponibles) {
             if (garaje.tieneEspaciosDisponibles() && !garaje.estaAutoEnGaraje(auto)) {
                 garaje.agregarAuto(auto);

@@ -22,8 +22,12 @@ public class TestCliente {
 		Integer idReserva = 11111111;
 		String modelo = "Fiesta";
 		String marca =  "Ford";
+		Integer idGaraje = 1;
+		String direccionGaraje = "Av. Victoria 123";
+		Integer espaciosDisponibles = 10;
+		Garaje garaje1 = new Garaje(idGaraje, direccion, espaciosDisponibles);
 		
-		Auto auto = new Auto("ABS 123", marca, modelo,350.5);
+		Auto auto = new Auto("ABS 123", marca, modelo,350.5, garaje1);
 		Reserva reserva1 = new Reserva(idReserva, cliente, auto, 15);
 		cliente.agregarReserva(reserva1);
 		Reserva reserva2 = new Reserva(idReserva, cliente, auto, 15);
@@ -39,10 +43,14 @@ public class TestCliente {
 		Integer telefono = 1122332233;
 		Cliente cliente = new Cliente(dni, direccion, nombreYApellido, telefono);
 		
+		Integer idGaraje = 1;
+		String direccionGaraje = "Av. Victoria 123";
+		Integer espaciosDisponibles = 10;
+		Garaje garaje1 = new Garaje(idGaraje, direccion, espaciosDisponibles);
 		Integer idReserva = 11111111;
 		String modelo = "Fiesta";
 		String marca =  "Ford";
-		Auto auto = new Auto("ABS 123", marca, modelo,350.5);
+		Auto auto = new Auto("ABS 123", marca, modelo,350.5, garaje1);
 		Reserva reserva1 = new Reserva(idReserva, cliente, auto, 40);
 		cliente.agregarReserva(reserva1);
 		Reserva reserva2 = new Reserva(idReserva, cliente, auto, 50);
@@ -61,10 +69,14 @@ public class TestCliente {
 		Integer telefono = 1122332233;
 		Cliente cliente = new Cliente(dni, direccion, nombreYApellido, telefono);
 		
+		Integer idGaraje = 1;
+		String direccionGaraje = "Av. Victoria 123";
+		Integer espaciosDisponibles = 10;
+		Garaje garaje1 = new Garaje(idGaraje, direccionGaraje, espaciosDisponibles);
 		Integer idReserva = 11111111;
 		String modelo = "Fiesta";
 		String marca =  "Ford";
-		Auto auto = new Auto("ABS 123", marca, modelo,350.5);
+		Auto auto = new Auto("ABS 123", marca, modelo,350.5, garaje1);
 		Reserva reserva1 = new Reserva(idReserva, cliente, auto, 20);
 		cliente.eliminarReserva(reserva1);
 		Reserva reserva2 = new Reserva(idReserva, cliente, auto, 20);
@@ -90,11 +102,23 @@ public class TestCliente {
 		String modelo = "Fiesta";
 		String marca =  "Ford";
 		Double precioPorDia = 500.5;
+		Integer dias = 20;
+		Auto auto = new Auto("ABS 123", marca, modelo,350.5, garaje); 
+		Reserva reserva1 = new Reserva(idReserva, cliente, auto, dias);
+		cliente.agregarReserva(reserva1);
+		Reserva reserva2 = new Reserva(idReserva, cliente, auto, dias);
+		cliente.agregarReserva(reserva2);
+		Reserva reserva3 = new Reserva(idReserva, cliente, auto, dias);
+		cliente.agregarReserva(reserva3);
+		AutoDeportivo ferrari = auto.new AutoDeportivo("ABS 123", marca, modelo,2010, 350.5, garaje, alquileres, precioPorDia, 500, true);
+		//cliente.setEsVip(true);
+		//Boolean puedeReservar = cliente.getEsVip();
+		Boolean puedeReservar = cliente.serVip();
+		assertTrue(puedeReservar);
 		
-		//AutoDeportivo auto = new AutoDeportivo("ABS 123", marca, modelo,2010, 350.5, garaje, alquileres, precioPorDia, 500, true);
-		//String patente, String marca, String modelo, int anio, double precio, Garaje garaje, 
-		//ArrayList<Alquiler> alquileres, double precioPorDia, int caballosDeFuerza, boolean turbo
-		//Reserva reserva1 = new Reserva(idReserva, cliente, auto, 20);
+		Reserva reserva = new Reserva(idReserva, cliente, ferrari, dias);
+		cliente.agregarReserva(reserva);
+		assertNotNull(reserva);
 	}
 
 }

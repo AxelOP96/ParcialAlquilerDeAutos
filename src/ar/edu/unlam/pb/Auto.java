@@ -29,12 +29,7 @@ public class Auto {
 	    this.anio = anio;
 	}
 	
-	public Auto(String patente, String marca, String modelo, Double precioPorDia) {
-		this.patente = patente;
-		this.marca = marca;
-		this.modelo = modelo;
-		this.precioPorDia = precioPorDia;
-		this.estaDisponible = true;
+	public Auto() {
 
 	}
 
