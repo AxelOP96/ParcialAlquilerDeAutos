@@ -1,31 +1,25 @@
 package ar.edu.unlam.pb;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Agencia {
     private String razonSocial;
     private Integer cuit;
     private ArrayList<Garaje> garajesDisponibles;
     private HashSet<Garaje> garajes;
-    private HashSet<Auto> autos ;		//Autos disponibles
+    private HashSet<Auto> autos;
 	private HashSet<Cliente> clientes;
 	private HashSet<Reserva> reservas;
-	
-	private Date fechaFin;
-	private Date fechaInicio;
 
-
-    public Agencia(String razonSocial, Integer l, ArrayList<Garaje> garajesDisponibles2) {
+    
+	public Agencia(String razonSocial, Integer l, ArrayList<Garaje> garajesDisponibles2) {
         this.razonSocial = razonSocial;
         this.cuit = l;
         this.garajesDisponibles = new ArrayList<>();
         this.garajes = new HashSet<>();
-        this.autos = new HashSet<>();
     }
     public Agencia(String razonSocial, Integer cuit) {
 		this.razonSocial = razonSocial;
@@ -37,11 +31,12 @@ public class Agencia {
 	}
 
 	public Agencia(String razonSocial, Integer cuit, HashSet<Garaje> garajesDisponibles) {
+		// TODO Auto-generated constructor stub
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 		this.garajes = garajesDisponibles;
-		this.autos = new HashSet<Auto>();
-		this.clientes = new HashSet<Cliente>();
+		this.autos = autos;
+		this.clientes = new HashSet();
 	}
 
 	public Agencia(String razonSocial,Integer cuit, HashSet<Garaje> garajes, HashSet<Auto> autos) {
@@ -79,17 +74,13 @@ public class Agencia {
 	}
 	
 	public Reserva alquilarAuto(Integer codReserva,Cliente cliente, Auto auto,Integer dias) {
-		if(autos.contains(auto)) {
-			
-			Reserva reserva = new Reserva(codReserva, cliente, auto, dias);
-			autos.remove(auto);
-			reservas.add(reserva);
-			auto.reservar();
-			auto.getGaraje().disminuirCantidadEspaciosDisponibles();//Hacer test de este
-			return reserva;
-		}
-		else
-			return null;
+		
+		Reserva reserva = new Reserva(codReserva, cliente, auto, dias);
+        reservas.add(reserva);
+        auto.reservar();
+        autos.remove(auto);
+        auto.getGaraje().disminuirCantidadEspaciosDisponibles();//Hacer test de este
+        return reserva;
 	}
 	public String getRazonSocial() {
 		return razonSocial;
@@ -137,8 +128,8 @@ public class Agencia {
 
 
 
-	public Boolean elAutoEstaDisponible(Auto auto) {
-		return this.autos.contains(auto);
+	public Boolean elAutoEstaDisponible(Auto auto1) {
+		return this.autos.contains(auto1);
 	}
 
 
@@ -182,7 +173,17 @@ public class Agencia {
         return false;
     }
 	public void agregarCliente(Cliente cliente) {
+		// TODO Auto-generated method stub
 		this.clientes.add(cliente);
+	}
+	public HashSet<Reserva> getReservas() {
+		return reservas;
+	}
+	public void setReservas(HashSet<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+	public void setGarajesDisponibles(ArrayList<Garaje> garajesDisponibles) {
+		this.garajesDisponibles = garajesDisponibles;
 	}
 
     public ArrayList<Garaje> getGarajesDisponibles() {
@@ -208,16 +209,18 @@ public class Agencia {
     }
 
 	private void quitarAuto(Auto auto) {
+		// TODO Auto-generated method stub
 		this.autos.remove(auto);
 	}
 
 	private Auto buscarAuto(String patente) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public boolean cambiarPrecio(String modelo, double nuevoPrecio) {
 	    for (Garaje garaje : garajesDisponibles) {
-	        for (Auto auto : garaje.getAutos()) {
+	        for (Auto auto : garaje.getAutosEnElGaraje()) {
 	            if (auto.getModelo().equals(modelo)) {
 	                auto.setPrecio(nuevoPrecio);
 	                return true;
@@ -247,55 +250,23 @@ public class Agencia {
 	    return null;
 	}
 
-	public boolean cambiarAuto(String patente, Auto autoNuevo) {
-	    if (autoNuevo == null) {
-	        return false;
-	    }
-
-	    // Buscar el auto a reemplazar
-	    Auto auto = null;
-	    Garaje garaje = null; // nueva línea agregada
-	    for (Garaje g : garajes) {
-	        for (Auto a : g.getAutos()) {
-	            if (a.getPatente().equals(patente)) {
-	                auto = a;
-	                garaje = g; // asignar el garaje correspondiente
-	                break;
-	            }
-	        }
-	        if (auto != null) {
-	            break;
-	        }
-	    }
-
-	    // Si el auto a reemplazar no existe, retornar false
-	    if (auto == null) {
-	        return false;
-	    }
-
-	    // Reemplazar el auto antiguo por el nuevo en la lista de autos del garaje
-	    garaje.getAutos().set(garaje.getAutos().indexOf(auto), autoNuevo);
-
-	    // Actualizar la referencia del garaje del nuevo auto
-	    autoNuevo.setGaraje(garaje);
-
-	    return true;
+	public boolean cambiarAuto(String string, Auto auto2) {
+		
+		return false;
 	}
-
-
 
 	public ArrayList<Auto> buscarAutoPorMarca(String marca) {
-	    ArrayList<Auto> autosEncontrados = new ArrayList<Auto>();
+	    ArrayList<Auto> autosPorMarca = new ArrayList<Auto>();
+	    Garaje[] garajes = new Garaje[] { /* Inicializar el array con los objetos Garaje */ };
 	    for (Garaje garaje : garajes) {
-	        for (Auto auto : garaje.getAutos()) {
+	        for (Auto auto : garaje.getAutosEnElGaraje()) {
 	            if (auto.getMarca().equals(marca)) {
-	                autosEncontrados.add(auto);
+	                autosPorMarca.add(auto);
 	            }
 	        }
 	    }
-	    return autosEncontrados;
+	    return autosPorMarca;
 	}
-
 
 	public int cantidadDeAutosDeUnaMarca(String marca) {
 	    int cantidad = 0;
@@ -323,12 +294,15 @@ public class Agencia {
 	    return null;
 	}
 
-	public List<Auto> mostrarAutosDisponiblesOrdenadosPorPrecio(Date fechaInicio, Date fechaFin) {
-	    return garajesDisponibles.stream()
-	            .flatMap(garaje -> garaje.getAutosEnElGaraje().stream())
-	            .filter(auto -> auto.estaDisponible(fechaInicio, fechaFin))
-	            .sorted(Comparator.comparingDouble(Auto::getPrecio))
-	            .collect(Collectors.toList());
+	public List<Auto> mostrarAutosDisponiblesOrdenadosPorPrecio() {
+	    List<Auto> autosDisponibles = new ArrayList<>();
+	    for (Garaje garaje : garajesDisponibles) {
+	        autosDisponibles.addAll(garaje.getAutosEnElGaraje());
+	    }
+	    List<Auto> autosOrdenados = new ArrayList<>(autosDisponibles);
+	    autosOrdenados.removeIf(auto -> !auto.estaDisponible(null,null));
+	    autosOrdenados.sort(Comparator.comparingDouble(Auto::getPrecio));
+	    return autosOrdenados;
 	}
 
 	public boolean devolverAuto(Auto auto) {
@@ -339,35 +313,27 @@ public class Agencia {
 	    alquiler.finalizar();
 	    Garaje garaje = auto.getGaraje();
 	    garaje.actualizarAlquiler(alquiler);
-	    // Agregamos el auto a la lista de autos disponibles en el garaje
-	    garaje.agregarAutoDisponible(auto);
 	    return true;
 	}
-	public List<Auto> mostrarAutosDisponiblesOrdenadosPorPrecio() {
-		return garajesDisponibles.stream()
-	            .flatMap(garaje -> garaje.getAutosEnElGaraje().stream())
-	            .filter(auto -> auto.estaDisponible(fechaInicio, fechaFin))
-	            .sorted(Comparator.comparingDouble(Auto::getPrecio))
-	            .collect(Collectors.toList());
-	}
 	public Boolean cambiarAutoDeLaReserva(Reserva reserva1, Auto auto3) {
-		if(this.autos.add(reserva1.getAuto())) {
-			reserva1.setAuto(auto3);
-			return true;
-		}else {
-			return null;
-		}
-			
+		// TODO Auto-generated method stub
+		reserva1.setAuto(auto3);
+		return true;
+	}
+	public Object cancelarReserva(Reserva reserva01) {
+		// TODO Auto-generated method stub
+		return reserva01 = null;
 		
 	}
-	
-	public HashSet<Reserva> getReservas() {
-		return reservas;
+	public Integer getCantidadMarcas(String marca) {
+		// TODO Auto-generated method stub
+		Integer cantidad =0;
+		for(Reserva reserva: reservas) {
+			if(reserva.getAuto().getMarca().equals(marca)) {
+				cantidad++;
+			}
+		}
+		return cantidad;
 	}
-	public void setReservas(HashSet<Reserva> reservas) {
-		this.reservas = reservas;
-	}
-	
-
 }
 
