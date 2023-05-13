@@ -23,7 +23,8 @@ public class Garaje {
 	    this.setIdGaraje(idGaraje);
 	    this.direccion = direccion;
 	    this.espaciosDisponibles = espaciosDisponibles;
-	    this.autosEnElGaraje = new ArrayList<Auto>(autosEnElGaraje);
+	    //this.autosEnElGaraje = new ArrayList<Auto>(autosEnElGaraje);
+	    this.autos = new ArrayList<>(); // Inicializa la lista vacía
 	    this.autosDisponibles = new ArrayList<>(autosDisponibles);
 	    this.autos = new ArrayList<Auto>();
 	}

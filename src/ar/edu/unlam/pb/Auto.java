@@ -12,7 +12,7 @@ public class Auto {
 	private double precio;
 	private Garaje garaje;
 	private int anio;
-	private Double precioPorDia;
+	protected Double precioPorDia;
 	private ArrayList<Alquiler> alquileres;
 	private String modelo;
 	private Boolean estaDisponible;
@@ -28,7 +28,7 @@ public class Auto {
 	    this.alquileres = new ArrayList<>();
 	    this.anio = anio;
 	}
-	
+
 	public Auto() {
 
 	}
@@ -40,7 +40,6 @@ public class Auto {
 		this.precioPorDia = precioPorDia;
 		this.garaje = garaje;
 	}
-	
 	
 	public void reservar() {
         estaDisponible = false;
@@ -182,14 +181,14 @@ public class Auto {
 		public class AutoDeportivo extends Auto {
 		    private int caballosDeFuerza;
 		    private boolean turbo;
-		    private String patente;
 
 		    public AutoDeportivo(String patente, String marca, String modelo, int anio, double precio, Garaje garaje, 
-		    		ArrayList<Alquiler> alquileres, double precioPorDia, int caballosDeFuerza, boolean turbo) {
-		        super(patente, marca, modelo, anio, precio, garaje, alquileres, precioPorDia);
-		        this.caballosDeFuerza = caballosDeFuerza;
-		        this.turbo = turbo;
-		    }
+		    	    ArrayList<Alquiler> alquileres, double precioPorDia, int caballosDeFuerza, boolean turbo) {
+		    	    super(patente, marca, modelo, anio, precio, garaje, alquileres, precioPorDia);
+		    	    this.caballosDeFuerza = caballosDeFuerza;
+		    	    this.turbo = turbo;
+		    	    setPrecioPorDia(precioPorDia);
+		    	}
 
 		    public int getCaballosDeFuerza() {
 		        return caballosDeFuerza;
@@ -206,21 +205,20 @@ public class Auto {
 		    public void setTurbo(boolean turbo) {
 		        this.turbo = turbo;
 		    }
-
-		    @Override
-		    public double getPrecioPorDia() {
-		        // Los autos deportivos tienen un 20% de aumento en el precio de alquiler
-		        return super.getPrecioPorDia() * 1.2;
+		    
+		    // Método para establecer el precio por día específico del auto deportivo
+		    public void setPrecioPorDia(double precioPorDia) {
+		        this.precioPorDia = precioPorDia;
 		    }
-
+		    
 		    @Override
 		    public String toString() {
 		        return "AutoDeportivo{" +
-		                "patente='" + this.getPatente() + '\'' +
-		                ", marca='" + this.getMarca() + '\'' +
-		                ", modelo='" + this.getModelo() + '\'' +
-		                ", anio=" + this.getAnio() +
-		                ", precio=" + this.getPrecio() +
+		                "patente='" + getPatente() + '\'' +
+		                ", marca='" + getMarca() + '\'' +
+		                ", modelo='" + getModelo() + '\'' +
+		                ", anio=" + getAnio() +
+		                ", precio=" + getPrecio() +
 		                ", caballosDeFuerza=" + caballosDeFuerza +
 		                ", turbo=" + turbo +
 		                '}';
