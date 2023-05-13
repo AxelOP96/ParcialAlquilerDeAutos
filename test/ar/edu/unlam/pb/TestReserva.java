@@ -701,7 +701,7 @@ public class TestReserva {
 	}
 	
 
-	@Test// alex
+	@Test
 	public void queSeBusqueAlClienteQueHizoMasReservasEnLaAgencia() {
 		String razonSocial = "Rodriguez y cia S.R.L";
 		Integer cuit = 250686778;
@@ -727,9 +727,12 @@ public class TestReserva {
 		Integer diasReserva = 20; 
 		agencia.registrarUnAuto(auto1, garaje1);
 		agencia.agregarCliente(cliente1);
-		Reserva reserva01 = agencia.alquilarAuto(dni, cliente1, auto1, diasReserva);
 		
-		assertNull(agencia.buscarClienteConMasReservas());//No busca al cliente
+		Reserva reserva01 = agencia.alquilarAuto(dni, cliente1, auto1, diasReserva);
+		cliente1.agregarReserva(reserva01);
+		cliente1.agregarReserva(reserva01);
+		cliente1.agregarReserva(reserva01);
+		assertNotNull(agencia.buscarClienteConMasReservas());
 	}
 	
 	
