@@ -382,12 +382,15 @@ public class Agencia {
 		}
 		return cantidad;
 	}
-	public Object buscarClienteConMasReservas() {
+	public Cliente buscarClienteConMasReservas() {
 		// TODO Auto-generated method stub
 		Cliente buscado = null;
 		Reserva prueba = null;
 		for(Cliente cliente: clientes) {
 			if(cliente.getHistorial().size()>0 && buscado ==null) {
+				buscado = cliente;
+			}
+			else if(cliente!=null && cliente.getHistorial().size()>buscado.getHistorial().size() && buscado !=null) {
 				buscado = cliente;
 			}
 		}
