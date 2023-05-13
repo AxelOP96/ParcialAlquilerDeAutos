@@ -539,6 +539,7 @@ public class TestReserva {
 	
 	@Test 
 	public void queSePuedaMostrarLasReservasHechas() {
+
 		
 		// Preparacion de datos
 		String razonSocial = "Rodriguez y cia S.R.L";
@@ -577,29 +578,28 @@ public class TestReserva {
 		
 		ag.agregarCliente(cliente1);
 		
-		Reserva reserva1 = ag.alquilarAuto(1, cliente1, auto1, 12);
-		Reserva reserva2 = ag.alquilarAuto(2, cliente1, auto2, 12);
-		Reserva reserva3 = ag.alquilarAuto(3, cliente1, auto3, 12);
+		Reserva reserva1 = ag.alquilarAuto(135435, cliente1, auto1, 12);
+		Reserva reserva2 = ag.alquilarAuto(235434, cliente1, auto2, 12);
+		Reserva reserva3 = ag.alquilarAuto(334533, cliente1, auto3, 12);
 		
-		
-		
+		Boolean EL_CLIENTE_ES_VIP = cliente1.getEsVip();		
 		// Validaciones
 		
 		assertNotNull(reserva1);
 		assertNotNull(reserva2);
 		assertNotNull(reserva3);
 		
+		assertTrue(EL_CLIENTE_ES_VIP);
 		
+		System.out.println("CodReserva  Cliente        marca       modelo    DiasAlquiler precioTotal");
+		System.out.println(reserva1.toString());
+		System.out.println(reserva2.toString());
+		System.out.println(reserva3.toString());
 		
 		
 	}
 	
-	
-	
-	
 
-	
-	
 	
 	@Test//test alex
 	public void queSePuedaCancelarUnaReserva() {
@@ -634,10 +634,7 @@ public class TestReserva {
 	
 
 	
-	
-	
-	
-	
+
 	
 	@Test//test alex
 	public void queSePuedaCambiarLaCantidadDeDiasDelAlquilerDeUnaReserva() {

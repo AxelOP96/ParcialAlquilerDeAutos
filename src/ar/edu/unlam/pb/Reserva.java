@@ -68,11 +68,10 @@ public class Reserva {
 	
 
 	public String toString() {
-		return "["+ "Cod="+this.codReserva + "Modelo="+this.auto.getModelo()+"]";
+		return + this.codReserva + " | "+this.cliente.getApellidoNombre() +" | "+this.auto.getMarca() + " | "+this.auto.getModelo() +" | "+this.dias +" | "+this.precioTotal;
 	}
 
-
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
