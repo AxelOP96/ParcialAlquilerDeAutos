@@ -538,7 +538,7 @@ public class TestReserva {
 	
 	
 	@Test 
-	public void queSePuedaMostrarLasReservasHechas() {
+	public void queSePuedaMostrarLasReservasHechasPorUnClienteQueSeHaceVip() {
 
 		
 		// Preparacion de datos
