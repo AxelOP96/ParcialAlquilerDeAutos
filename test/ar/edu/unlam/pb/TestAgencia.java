@@ -49,6 +49,21 @@ public class TestAgencia {
 	    
 
 	}
+	@Test
+	public void queNoSePuedaIncluirUnClienteSinDatosAUnaAgencia() {
+		String razonSocial = "SA";
+		Integer cuit = 19919919;
+		HashSet <Auto> autosDisponibles= new HashSet<>();
+		ArrayList <Garaje> garajesDisponibles = new ArrayList<>();
+		
+		Agencia agencia = new Agencia(razonSocial, cuit, garajesDisponibles);
+		Cliente cliente = null;
+		agencia.agregarCliente(cliente);
+		assertEquals(agencia.getClientes().size(), 0);
+		
+	    
+
+	}
 	
 	@Test
 	public void queSePuedaIncluirUnAutoDeportivoAUnaAgencia() {

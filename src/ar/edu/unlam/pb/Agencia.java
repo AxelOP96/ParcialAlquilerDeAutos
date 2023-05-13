@@ -200,7 +200,11 @@ public class Agencia {
     }
 	public void agregarCliente(Cliente cliente) {
 		// TODO Auto-generated method stub
-		this.clientes.add(cliente);
+		if(cliente != null)
+			this.clientes.add(cliente);
+		else {
+			this.clientes.remove(cliente);
+		}
 	}
 	public HashSet<Reserva> getReservas() {
 		return reservas;
